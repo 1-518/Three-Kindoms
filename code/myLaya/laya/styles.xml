@@ -1,0 +1,5 @@
+<res>
+   <item name="three" type="" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
+   <item name="three/timg (1).jpg" type="Sprite" compress="0" pack="0" quality="80" props="sizeGrid=23,61,22,45" picType="0" scale="0"/>
+   <item name="three/按钮.png" type="Sprite" compress="0" pack="0" quality="80" props="sizeGrid=0,0,0,19" picType="0" scale="0"/>
+</res>
