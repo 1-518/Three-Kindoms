@@ -83,5 +83,17 @@
       get PersonState() {
           return this.personState;
       }
- 
+
+      personChangeLoyal( number){
+          //武将忠诚改变
+          Person.personLoyal+=number;
+      }
+      PersonChangeCityID( cityID){
+        //所在城池改变
+        Person.personCityID=cityID;
+      }
+      personChangeState(state){
+        //状态改变
+        Person.personState=state;
+      }
  }
