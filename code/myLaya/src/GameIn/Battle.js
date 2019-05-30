@@ -1,13 +1,12 @@
 
  export default class Battle {
-    constructor(BattleID,BattleName,BattleAttackArmyID,BattleAttackCityName,BattleDefendArmyID,BattleFieldCityID,BattleResult){
+    constructor(BattleID,BattleName,BattleAttackArmyID,BattleDefendArmyID,BattleFieldCityID,BattleResult){
         this.BattleID=BattleID;
         this.BattleName=BattleName;
         this.BattleAttackArmyID=BattleAttackArmyID;
         this.BattleDefendArmyID=BattleDefendArmyID;
         this.BattleFieldCityID=BattleFieldCityID;
         this.BattleResult=BattleResult;
-        this.BattleAttackCityName=BattleAttackCityName;
     }
 
       set BattleID( BattleID) {
@@ -51,20 +50,5 @@
       get BattleResult() {
           return this.BattleResult;
       }
-
-      set BattleAttackCityName(BattleAttackCityName){
-          this.BattleAttackCityName = BattleAttackCityName;
-      }
-      get BattleAttackCityName(BattleAttackCityName){
-          return this.BattleAttackCityName;
-      }
-
-      BattleNameGeneration(BattleAttackCityName){
-        //战役名称生成
-        Battle.BattleName==BattleAttackCityName;
-      }
-      BattleResultGeneration( BattleAttackArmyID, BattleDefendArmyID, BattleFieldCityID){
-        //战役结果生成
-        
-      }
+ 
  }

@@ -35,13 +35,5 @@
       get FactionCapitalID() {
           return this.FactionCapitalID;
       }
-      
-      FactionChangeLeaderPersonID( number){
-          //势力主公武将更换
-          Faction.FactionLeaderPersonID=number;
-      }
-      FactionChangeCapitalID( number){
-          //势力首都城池更换
-          Faction.FactionCapitalID=number;
-      }
+ 
  }
