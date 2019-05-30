@@ -19,12 +19,4 @@
           return this.season;
       }
  
-      timeSeasonChange( season){
-          //季节变化
-          Time.season=season;
-      }
-      timeYearChange( year){
-          //新年快乐
-          Time.year+=1;
-      }
  }

@@ -58,30 +58,6 @@
       get ArmyMoney() {
           return this.armyMoney;
       }
-
-      armyChangeMainID( number){
-        //主将修改
-        Army.armyMainID=number;
-      }
-      armyChangeAssisiant1ID( number){
-        //副将1修改
-        Army.armyAssisiant1ID=number;
-      }
-      armyChangeAssisiant2ID( number){
-        //副将2修改
-        Army.armyAssisiant2ID=number;
-      }
-      armyChangeSoldier( number){
-        //士兵修改
-        Army.armySoldier+=number;
-      }
-      armyChangeFood( number){
-        //粮草修改
-        Army.armyFood+=number;
-      }
-      armyChangeMoney( number){
-        //金钱修改
-        Army.armyMoney+=number;
-      }
+ 
+ 
  }
-  
