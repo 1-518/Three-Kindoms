@@ -1,5 +1,5 @@
 
- export default class Citys {
+ export default class Player {
     constructor(playerID,playerScore){
         this.playerID=playerID;
         this.playerScore=playerScore;
@@ -19,5 +19,13 @@
           return this.playerScore;
       }
  
+      PlayerChangeMaxScore( MaxScore){
+          //玩家最高成绩改变
+          if(MaxScore>Player.playerScore){
+              Player.playerScore=MaxScore;
+          }
+          else
+          return Player.playerScore;
+      }
  
  }

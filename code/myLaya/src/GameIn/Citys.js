@@ -88,4 +88,41 @@
          return this.cityBelongFactionID;
      }
 
+     cityChangeFood( number){
+         //粮草改变
+         Citys.cityFood+=number;
+     }
+
+     cityChangeFarm( number){
+        number=10; 
+        //农业改变
+         Citys.cityFarm+=number;
+     }
+
+     cityChangeMoney(number){
+        //金钱改变
+        Citys.cityMoney+=number;
+     }
+
+     cityChangeBusiness( number){
+        //商业改变
+        Citys.cityBussiness+=number;
+     }
+
+     cityChangeDefense( number){
+        //城防改变
+        Citys.cityDefense+=number;
+     }
+     cityChangeSoldier( number){
+        //士兵数改变
+        Citys.citySoldier+=number;
+     }
+     cityChangeLoyal( number){
+         //民忠改变
+         Citys.cityLoyal+=number;
+     }
+     cityChangeBelongFactionID( number){
+         //所属势力改变
+         Citys.cityBelongFactionID=number;
+     }
 }
