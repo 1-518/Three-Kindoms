@@ -1,6 +1,4 @@
-import Citys from "./Citys";
-import cityID from "./Citys";
-import cityMoney from "./Citys";
+
 
   export default class Persons {
  
@@ -86,17 +84,16 @@ import cityMoney from "./Citys";
           return this.personState;
       }
 
-      personChangeLoyal(Citys ){
+      personChangeLoyal( number){
           //武将忠诚改变
-          Citys.cityMoney=Citys.cityMoney-this.personLoyal*10;
-
+          Person.personLoyal+=number;
       }
-      PersonChangeCityID(Citys ){
+      PersonChangeCityID( cityID){
         //所在城池改变
-        Person.personCityID=Citys.cityID;
+        Person.personCityID=cityID;
       }
       personChangeState(state){
         //状态改变
-        this.personState=state;
+        Person.personState=state;
       }
  }

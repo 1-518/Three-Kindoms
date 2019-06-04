@@ -1,4 +1,3 @@
-import Persons from "./Persons";
 
  export default class Army {
         constructor(armyID,armyMainID,armyAssisiant1ID,armyAssisiant2ID,armySoldier,armyFood,armyMoney){
@@ -59,29 +58,29 @@ import Persons from "./Persons";
       get ArmyMoney() {
           return this.armyMoney;
       }
-      armyChangeMainID( Persons){
+      armyChangeMainID( number){
         //主将修改
-        Army.armyMainID=Persons;
+        Army.armyMainID=number;
       }
-      armyChangeAssisiant1ID(Persons ){
+      armyChangeAssisiant1ID( number){
         //副将1修改
-       this.armyAssisiant1ID=Persons;
+        Army.armyAssisiant1ID=number;
       }
-      armyChangeAssisiant2ID(Persons ){
+      armyChangeAssisiant2ID( number){
         //副将2修改
-        this.armyAssisiant2ID=Persons;
+        Army.armyAssisiant2ID=number;
       }
       armyChangeSoldier( number){
         //士兵修改
-        this.armySoldier+=number;
+        Army.armySoldier+=number;
       }
       armyChangeFood( number){
         //粮草修改
-        this.armyFood+=number;
+        Army.armyFood+=number;
       }
       armyChangeMoney( number){
         //金钱修改
-        this.armyMoney+=number;
+        Army.armyMoney+=number;
       }
       
  

@@ -21,10 +21,10 @@
  
       timeSeasonChange( season){
           //季节变化
-          this.season=season;
+          Time.season=season;
       }
       timeYearChange( year){
           //新年快乐
-          this.year+=1;
+          Time.year+=1;
       }
  }

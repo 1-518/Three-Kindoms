@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"Scene",
-    "selectedBox":2,
-    "selecteID":98,
+    "selectedBox":25,
+    "selecteID":20,
     "searchKey":"Scene",
     "props":{"width":1136,"sceneColor":"#000000","runtime":"gameUI/gameUiCon.js","height":640},
     "nodeParent":-1,
@@ -18,7 +18,7 @@
             "x":15,
             "type":"Panel",
             "searchKey":"Panel",
-            "props":{"y":-90,"x":-160,"width":1627,"vScrollBarSkin":"comp/vscroll.png","height":916,"hScrollBarSkin":"comp/vscroll.png","elasticEnabled":true},
+            "props":{"y":-90,"x":-160,"width":1622,"vScrollBarSkin":"comp/vscroll.png","height":924,"hScrollBarSkin":"comp/vscroll.png","elasticEnabled":true},
             "nodeParent":2,
             "label":"Panel",
             "isOpen":true,
@@ -782,13 +782,14 @@
             "props":{"y":511,"x":90,"var":"downData"},
             "nodeParent":2,
             "label":"downData",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":96,
             "child":[
                 {
+                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,military",
                     "props":{"y":13,"x":55,"width":110,"var":"military","skin":"comp/button.png","pivotX":55,"labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":30,"labelFont":"Helvetica","labelBold":true,"labelAlign":"center","label":"军事","height":47},
@@ -803,6 +804,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,interior",
                     "props":{"y":13,"x":255,"width":110,"var":"interior","skin":"comp/button.png","pivotX":55,"label":"内政","height":47},
@@ -817,6 +819,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,tricks",
                     "props":{"y":13,"x":455,"width":110,"var":"tricks","skin":"comp/button.png","pivotX":55,"label":"计策","height":47},
@@ -830,6 +833,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,personnel",
                     "props":{"y":13,"x":655,"width":110,"var":"personnel","skin":"comp/button.png","pivotX":64,"label":"人事","height":47},
@@ -843,6 +847,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,next",
                     "props":{"x":862,"width":200,"var":"next","skin":"comp/button.png","pivotX":88,"label":"下一回合","height":73},
@@ -856,18 +861,20 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Box",
                     "searchKey":"Box,menu",
                     "props":{"y":-75,"x":176,"var":"menu"},
                     "nodeParent":96,
                     "label":"menu",
-                    "isOpen":null,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":97,
                     "child":[
                         {
+                            "x":45,
                             "type":"Box",
                             "searchKey":"Box,militaryMenu",
                             "props":{"x":-174,"visible":false,"var":"militaryMenu"},
@@ -923,18 +930,20 @@
                             "$HIDDEN":true
                         },
                         {
+                            "x":45,
                             "type":"Box",
                             "searchKey":"Box,interiorMenu",
                             "props":{"x":-4,"visible":false,"var":"interiorMenu"},
                             "nodeParent":97,
                             "label":"interiorMenu",
-                            "isOpen":false,
+                            "isOpen":true,
                             "isDirectory":true,
                             "isAniNode":true,
                             "hasChild":true,
                             "compId":25,
                             "child":[
                                 {
+                                    "x":60,
                                     "type":"Button",
                                     "searchKey":"Button,farmDeve",
                                     "props":{"y":0,"x":0,"width":110,"var":"farmDeve","skin":"comp/button.png","label":"开发农田","height":47},
@@ -949,6 +958,7 @@
                                         ]
                                 },
                                 {
+                                    "x":60,
                                     "type":"Button",
                                     "searchKey":"Button,busnessDeve",
                                     "props":{"y":0,"x":150,"width":110,"var":"busnessDeve","skin":"comp/button.png","label":"开发商业","height":47},
@@ -962,6 +972,7 @@
                                         ]
                                 },
                                 {
+                                    "x":60,
                                     "type":"Button",
                                     "searchKey":"Button,hayBusiness",
                                     "props":{"y":0,"x":300,"width":110,"var":"hayBusiness","skin":"comp/button.png","label":"粮草买卖","height":47},
@@ -975,6 +986,7 @@
                                         ]
                                 },
                                 {
+                                    "x":60,
                                     "type":"Button",
                                     "searchKey":"Button,impLoval",
                                     "props":{"y":0,"x":450,"width":110,"var":"impLoval","skin":"comp/button.png","label":"提高民忠","height":47},
@@ -988,9 +1000,10 @@
                                     "child":[
                                         ]
                                 }],
-                            "$HIDDEN":true
+                            "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"Box",
                             "searchKey":"Box,tricksMenu",
                             "props":{"x":-160,"visible":false,"var":"tricksMenu"},
@@ -1070,6 +1083,7 @@
                             "$HIDDEN":true
                         },
                         {
+                            "x":45,
                             "type":"Box",
                             "searchKey":"Box,personnelMenu",
                             "props":{"visible":false,"var":"personnelMenu"},
@@ -1146,10 +1160,11 @@
                                     "child":[
                                         ]
                                 }],
-                            "$HIDDEN":false
-                        }]
+                            "$HIDDEN":true
+                        }],
+                    "$HIDDEN":false
                 }],
-            "$HIDDEN":true
+            "$HIDDEN":false
         },
         {
             "x":15,

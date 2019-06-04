@@ -1,9 +1,3 @@
-import Persons from "./Persons";
-import personCommand from "./Persons";
-import personMilitary from "./Persons";
-import personPolitics from "./Persons";
-import personTrick from "./Persons";
-import personState from "./Persons";
 
 
  export default class Citys {
@@ -94,47 +88,41 @@ import personState from "./Persons";
          return this.cityBelongFactionID;
      }
 
-    cityChangeFood(){
+     cityChangeFood( number){
          //粮草改变
-         this.cityFood+=this.cityFarm;
+         Citys.cityFood+=number;
      }
 
-     cityChangeFarm( Persons){
-         //农业改变
-         this.cityMoney=100-Persons.personCommand*Persons.personMilitary;
-         this.cityFarm+=Persons.personCommand+Persons.personMilitary;
-         Persons.personState=-1;
+     cityChangeFarm( number){
+        number=10; 
+        //农业改变
+         Citys.cityFarm+=number;
      }
 
-     cityChangeMoney(){
+     cityChangeMoney(number){
         //金钱改变
-        this.cityMoney+=this.cityBussiness;
+        Citys.cityMoney+=number;
      }
 
-     cityChangeBusiness(Persons ){
+     cityChangeBusiness( number){
         //商业改变
-        this.cityMoney=100-Persons.personPolitics*Persons.personTrick;
-        this.cityBussiness+=Persons.personPolitics+Persons.personTrick;
+        Citys.cityBussiness+=number;
      }
 
-     cityChangeDefense( Persons){
+     cityChangeDefense( number){
         //城防改变
-        this.cityMoney=100-Persons.personCommand*Persons.personTrick;
-        this.cityDefense=Persons.personCommand+Persons.personTrick;
+        Citys.cityDefense+=number;
      }
-     cityChangeSoldier(Persons ){
+     cityChangeSoldier( number){
         //士兵数改变
-        this.cityMoney=100-Persons.personPolitics*Persons.personTrick;
-        this.cityBussiness+=Persons.personPolitics+Persons.personTrick;
+        Citys.citySoldier+=number;
      }
-     cityChangeLoyal(Persons ){
+     cityChangeLoyal( number){
          //民忠改变
-         this.cityMoney=100-Persons.personPolitics*Persons.personTrick;
-         this.cityFood=100-Persons.personCommand-Persons.personMilitary;
-         this.cityLoyal=Persons.personCommand+Persons.personMilitary+Persons.personPolitics+Persons.personTrick;
+         Citys.cityLoyal+=number;
      }
      cityChangeBelongFactionID( number){
          //所属势力改变
-        this.cityBelongFactionID=number;
+         Citys.cityBelongFactionID=number;
      }
 }
