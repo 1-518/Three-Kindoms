@@ -21,11 +21,11 @@
  
       PlayerChangeMaxScore( MaxScore){
           //玩家最高成绩改变
-          if(MaxScore>Player.playerScore){
-              Player.playerScore=MaxScore;
+          if(MaxScore>this.playerScore){
+              this.playerScore=MaxScore;
           }
           else
-          return Player.playerScore;
+          return this.playerScore;
       }
  
  }
