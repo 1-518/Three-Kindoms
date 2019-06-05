@@ -94,7 +94,8 @@
      }
 
      cityChangeFarm( number){
-         //农业改变
+        number=10; 
+        //农业改变
          Citys.cityFarm+=number;
      }
 

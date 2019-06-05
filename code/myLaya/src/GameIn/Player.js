@@ -1,5 +1,5 @@
 
- export default class Citys {
+ export default class Player {
     constructor(playerID,playerScore){
         this.playerID=playerID;
         this.playerScore=playerScore;
