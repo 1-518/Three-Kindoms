@@ -1,5 +1,5 @@
 {
-"RECORDS":[
+"midCity":[
 {
 "cityID":"1",
 "cityName":"北海",
@@ -10,7 +10,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"12",
+"cityConnCityID":"1,7,8"
 },
 {
 "cityID":"2",
@@ -22,11 +23,12 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"4",
+"cityConnCityID":"3,10,1,8"
 },
 {
 "cityID":"3",
-"cityName":"黄陵",
+"cityName":"广陵",
 "cityFood":"100",
 "cityFarm":"10",
 "cityMoney":"100",
@@ -34,7 +36,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"20",
+"cityConnCityID":"14,11,2,10"
 },
 {
 "cityID":"4",
@@ -46,7 +49,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"18",
+"cityConnCityID":"11,5"
 },
 {
 "cityID":"5",
@@ -58,7 +62,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"19",
+"cityConnCityID":"4"
 },
 {
 "cityID":"6",
@@ -70,7 +75,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"6",
+"cityConnCityID":"7,12,17,16,13"
 },
 {
 "cityID":"7",
@@ -82,7 +88,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"9",
+"cityConnCityID":"1,13,8,6"
 },
 {
 "cityID":"8",
@@ -94,7 +101,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"7",
+"cityConnCityID":"13,18,9,7,2,1"
 },
 {
 "cityID":"9",
@@ -106,7 +114,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"9",
+"cityConnCityID":"19,10,20,8,18"
 },
 {
 "cityID":"10",
@@ -118,7 +127,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"3",
+"cityConnCityID":"9,14,3,2"
 },
 {
 "cityID":"11",
@@ -130,7 +140,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"17",
+"cityConnCityID":"4,15,3,14"
 },
 {
 "cityID":"12",
@@ -142,7 +153,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"2",
+"cityConnCityID":"16,6"
 },
 {
 "cityID":"13",
@@ -154,7 +166,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"9",
+"cityConnCityID":"17,18,16,8,7,6"
 },
 {
 "cityID":"14",
@@ -166,7 +179,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"24",
+"cityConnCityID":"25,19,15,11,10"
 },
 {
 "cityID":"15",
@@ -178,7 +192,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"21",
+"cityConnCityID":"26,14,11"
 },
 {
 "cityID":"16",
@@ -190,7 +205,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"9",
+"cityConnCityID":"21,12,6,13,17"
 },
 {
 "cityID":"17",
@@ -202,7 +218,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"10",
+"cityConnCityID":"22,23,20,18,13,6,16"
 },
 {
 "cityID":"18",
@@ -214,7 +231,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"9",
+"cityConnCityID":"20,23,17,8,13,9"
 },
 {
 "cityID":"19",
@@ -226,7 +244,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"9",
+"cityConnCityID":"20,24,25,9,14"
 },
 {
 "cityID":"20",
@@ -238,7 +257,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"1",
+"cityConnCityID":"18,19,27,24,9,23,17"
 },
 {
 "cityID":"21",
@@ -250,11 +270,12 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"8",
+"cityConnCityID":"22,16"
 },
 {
 "cityID":"22",
-"cityName":"上棠",
+"cityName":"上党",
 "cityFood":"100",
 "cityFarm":"10",
 "cityMoney":"100",
@@ -262,7 +283,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"15",
+"cityConnCityID":"33,23,17,21"
 },
 {
 "cityID":"23",
@@ -274,7 +296,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"16",
+"cityConnCityID":"27,22,17,20,18"
 },
 {
 "cityID":"24",
@@ -286,7 +309,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"23",
+"cityConnCityID":"28,19,25,27,20"
 },
 {
 "cityID":"25",
@@ -298,7 +322,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"11",
+"cityConnCityID":"29,14,24,19"
 },
 {
 "cityID":"26",
@@ -310,7 +335,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"14",
+"cityConnCityID":"29,15"
 },
 {
 "cityID":"27",
@@ -322,7 +348,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"4",
+"cityConnCityID":"30,23,20,24"
 },
 {
 "cityID":"28",
@@ -334,7 +361,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"4",
+"cityConnCityID":"30,29,24"
 },
 {
 "cityID":"29",
@@ -346,7 +374,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"13",
+"cityConnCityID":"31,28,26"
 },
 {
 "cityID":"30",
@@ -358,7 +387,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"5",
+"cityConnCityID":"28,27"
 },
 {
 "cityID":"31",
@@ -370,7 +400,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"13",
+"cityConnCityID":"34,32,29"
 },
 {
 "cityID":"32",
@@ -382,7 +413,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"22",
+"cityConnCityID":"35,31"
 },
 {
 "cityID":"33",
@@ -394,7 +426,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"5",
+"cityConnCityID":"22"
 },
 {
 "cityID":"34",
@@ -406,7 +439,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"4",
+"cityConnCityID":"31"
 },
 {
 "cityID":"35",
@@ -418,7 +452,8 @@
 "cityDefense":"100",
 "citySoldier":"1000",
 "cityLoyal":"60",
-"cityBelongFactionID":null
+"cityBelongFactionID":"4",
+"cityConnCityID":"32"
 }
 ]
 }

@@ -1,4 +1,6 @@
 import Citys from "../GameIn/Citys";
+import Persons from "../GameIn/Persons";
+import Factions from "../GameIn/Factions";
 
 
     export default class gameUiCon extends Laya.Scene {
@@ -6,26 +8,32 @@ import Citys from "../GameIn/Citys";
     constructor() { 
         super(); 
         this.loadScene("gameMain/gameMain");
+        this.cityNum;
+        this.personNum={};
 
-        this.arr1;
-        this.arr2;
-        Laya.loader.load("midCity.json",Laya.Handler.create(this,this.onStart),null,Laya.loader.JSON);
-        
-        
-
-        
+        this.arrCity=[];
+        Laya.loader.load("midCity.json",Laya.Handler.create(this,this.onCityStart),null,Laya.loader.JSON);
+        this.arrFaction=[];
+        Laya.loader.load("midFaction.json",Laya.Handler.create(this,this.onFactionStart),null,Laya.loader.JSON);
+        this.arrPerson=[];
+        Laya.loader.load("midPerson.json",Laya.Handler.create(this,this.onPersonStart),null,Laya.loader.JSON);
     }
-    onStart(){
+
+    onCityStart(){
         var json=Laya.loader.getRes("midCity.json");
-        this.arr1=json["RECORDS"]; //arry[35]从json读取进来。    
-        let i=0;  
-        while(i<35){
-            this.arr2[i]=new Citys(this.arr1[i].cityID,this.arr1[i].cityName,this.arr1[i].cityFood,this.arr1[i].cityFarm,this.arr1[i].cityMoney,this.arr1[i].cityBussiness,this.arr1[i].cityDefense,this.arr1[i].citySoldier,this.arr1[i].cityLoyal,this.arr1[i].cityBelongFactionID)
-            console.log(this.arr2[i].CityID);
-            i++;
-        }
-    } 
-    
+        this.arrCity=json["midCity"]; //arry[35]从json读取进来。     
+    }
+
+    onFactionStart(){
+        var json=Laya.loader.getRes("midFaction.json");
+        this.arrFaction=json["midFaction"]; //arry[35]从json读取进来。    
+    }
+
+    onPersonStart(){
+        var json=Laya.loader.getRes("midPerson.json");
+        this.arrPerson=json["midPerson"]; //arry[35]从json读取进来。    
+    }
+
     onEnable() {
        
 
@@ -36,7 +44,7 @@ import Citys from "../GameIn/Citys";
         this.information.on(Laya.Event.CLICK,this,this.infListCon);
 
         //
-        //var arr1=json["RECORDS"]; //arry[35]从json读取进来。
+        //var this.arrCity=json["RECORDS"]; //arry[35]从json读取进来。
        
         //监听返回值
 
@@ -148,460 +156,461 @@ import Citys from "../GameIn/Citys";
    //写入城池北海信息
    setBeiHai(){
            // var json=Laya.loader.getRes("midCity.json");//加载json中的数据
-            //var arr1=json["RECORDS"];
-            this.cityName.text=arr1[0].cityName;
-            this.moneyData.text=arr1[0].cityMoney;
-            this.bunessData.text=arr1[0].cityBussiness;
-            this.hayData.text=arr1[0].cityFood;
-            this.farmData.text=arr1[0].cityFarm;
-            this.soldiersData.text=arr1[0].citySoldier;
-            this.cityDefData.text=arr1[0].cityDefense;
-            this.lovalData.text=arr1[0].cityLoyal;
+            //var this.arrCity=json["RECORDS"];
+            this.cityName.text=this.arrCity[0].cityName;
+            this.moneyData.text=this.arrCity[0].cityMoney;
+            this.bunessData.text=this.arrCity[0].cityBussiness;
+            this.hayData.text=this.arrCity[0].cityFood;
+            this.farmData.text=this.arrCity[0].cityFarm;
+            this.soldiersData.text=this.arrCity[0].citySoldier;
+            this.cityDefData.text=this.arrCity[0].cityDefense;
+            this.lovalData.text=this.arrCity[0].cityLoyal;
             this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     //写入琅琊信息
     setLangya(){
         //var json=Laya.loader.getRes("midCity.json");
-        //var arr1=json["RECORDS"];
-        this.cityName.text=arr1[1].cityName;
-        this.moneyData.text=arr1[1].cityMoney;
-        this.bunessData.text=arr1[1].cityBussiness;
-        this.hayData.text=arr1[1].cityFood;
-        this.farmData.text=arr1[1].cityFarm;
-        this.soldiersData.text=arr1[1].citySoldier;
-        this.cityDefData.text=arr1[1].cityDefense;
-        this.lovalData.text=arr1[1].cityLoyal;
+        //var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[1].cityName;
+        this.moneyData.text=this.arrCity[1].cityMoney;
+        this.bunessData.text=this.arrCity[1].cityBussiness;
+        this.hayData.text=this.arrCity[1].cityFood;
+        this.farmData.text=this.arrCity[1].cityFarm;
+        this.soldiersData.text=this.arrCity[1].citySoldier;
+        this.cityDefData.text=this.arrCity[1].cityDefense;
+        this.lovalData.text=this.arrCity[1].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     //写入黄陵信息
     setHuangLing(){
        // var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[2].cityName;
-        this.moneyData.text=arr1[2].cityMoney;
-        this.bunessData.text=arr1[2].cityBussiness;
-        this.hayData.text=arr1[2].cityFood;
-        this.farmData.text=arr1[2].cityFarm;
-        this.soldiersData.text=arr1[2].citySoldier;
-        this.cityDefData.text=arr1[2].cityDefense;
-        this.lovalData.text=arr1[2].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[2].cityName;
+        this.moneyData.text=this.arrCity[2].cityMoney;
+        this.bunessData.text=this.arrCity[2].cityBussiness;
+        this.hayData.text=this.arrCity[2].cityFood;
+        this.farmData.text=this.arrCity[2].cityFarm;
+        this.soldiersData.text=this.arrCity[2].citySoldier;
+        this.cityDefData.text=this.arrCity[2].cityDefense;
+        this.lovalData.text=this.arrCity[2].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setWu(){
        // var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[3].cityName;
-        this.moneyData.text=arr1[3].cityMoney;
-        this.bunessData.text=arr1[3].cityBussiness;
-        this.hayData.text=arr1[3].cityFood;
-        this.farmData.text=arr1[3].cityFarm;
-        this.soldiersData.text=arr1[3].citySoldier;
-        this.cityDefData.text=arr1[3].cityDefense;
-        this.lovalData.text=arr1[3].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[3].cityName;
+        this.moneyData.text=this.arrCity[3].cityMoney;
+        this.bunessData.text=this.arrCity[3].cityBussiness;
+        this.hayData.text=this.arrCity[3].cityFood;
+        this.farmData.text=this.arrCity[3].cityFarm;
+        this.soldiersData.text=this.arrCity[3].citySoldier;
+        this.cityDefData.text=this.arrCity[3].cityDefense;
+        this.lovalData.text=this.arrCity[3].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setKuaiJi(){
        // var json=Laya.loader.getRes("midCity.json");
-        //var arr1=json["RECORDS"];
-        this.cityName.text=arr1[4].cityName;
-        this.moneyData.text=arr1[4].cityMoney;
-        this.bunessData.text=arr1[4].cityBussiness;
-        this.hayData.text=arr1[4].cityFood;
-        this.farmData.text=arr1[4].cityFarm;
-        this.soldiersData.text=arr1[4].citySoldier;
-        this.cityDefData.text=arr1[4].cityDefense;
-        this.lovalData.text=arr1[4].cityLoyal;
+        //var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[4].cityName;
+        this.moneyData.text=this.arrCity[4].cityMoney;
+        this.bunessData.text=this.arrCity[4].cityBussiness;
+        this.hayData.text=this.arrCity[4].cityFood;
+        this.farmData.text=this.arrCity[4].cityFarm;
+        this.soldiersData.text=this.arrCity[4].citySoldier;
+        this.cityDefData.text=this.arrCity[4].cityDefense;
+        this.lovalData.text=this.arrCity[4].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setNanPi(){
        // var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[5].cityName;
-        this.moneyData.text=arr1[5].cityMoney;
-        this.bunessData.text=arr1[5].cityBussiness;
-        this.hayData.text=arr1[5].cityFood;
-        this.farmData.text=arr1[5].cityFarm;
-        this.soldiersData.text=arr1[5].citySoldier;
-        this.cityDefData.text=arr1[5].cityDefense;
-        this.lovalData.text=arr1[5].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[5].cityName;
+        this.moneyData.text=this.arrCity[5].cityMoney;
+        this.bunessData.text=this.arrCity[5].cityBussiness;
+        this.hayData.text=this.arrCity[5].cityFood;
+        this.farmData.text=this.arrCity[5].cityFarm;
+        this.soldiersData.text=this.arrCity[5].citySoldier;
+        this.cityDefData.text=this.arrCity[5].cityDefense;
+        this.lovalData.text=this.arrCity[5].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setPingYuang(){
        // var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[6].cityName;
-        this.moneyData.text=arr1[6].cityMoney;
-        this.bunessData.text=arr1[6].cityBussiness;
-        this.hayData.text=arr1[6].cityFood;
-        this.farmData.text=arr1[6].cityFarm;
-        this.soldiersData.text=arr1[6].citySoldier;
-        this.cityDefData.text=arr1[6].cityDefense;
-        this.lovalData.text=arr1[6].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[6].cityName;
+        this.moneyData.text=this.arrCity[6].cityMoney;
+        this.bunessData.text=this.arrCity[6].cityBussiness;
+        this.hayData.text=this.arrCity[6].cityFood;
+        this.farmData.text=this.arrCity[6].cityFarm;
+        this.soldiersData.text=this.arrCity[6].citySoldier;
+        this.cityDefData.text=this.arrCity[6].cityDefense;
+        this.lovalData.text=this.arrCity[6].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setJiBei(){
        // var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[7].cityName;
-        this.moneyData.text=arr1[7].cityMoney;
-        this.bunessData.text=arr1[7].cityBussiness;
-        this.hayData.text=arr1[7].cityFood;
-        this.farmData.text=arr1[7].cityFarm;
-        this.soldiersData.text=arr1[7].citySoldier;
-        this.cityDefData.text=arr1[7].cityDefense;
-        this.lovalData.text=arr1[7].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[7].cityName;
+        this.moneyData.text=this.arrCity[7].cityMoney;
+        this.bunessData.text=this.arrCity[7].cityBussiness;
+        this.hayData.text=this.arrCity[7].cityFood;
+        this.farmData.text=this.arrCity[7].cityFarm;
+        this.soldiersData.text=this.arrCity[7].citySoldier;
+        this.cityDefData.text=this.arrCity[7].cityDefense;
+        this.lovalData.text=this.arrCity[7].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setXiaoPei(){
         //var json=Laya.loader.getRes("midCity.json");
-        //var arr1=json["RECORDS"];
-        this.cityName.text=arr1[8].cityName;
-        this.moneyData.text=arr1[8].cityMoney;
-        this.bunessData.text=arr1[8].cityBussiness;
-        this.hayData.text=arr1[8].cityFood;
-        this.farmData.text=arr1[8].cityFarm;
-        this.soldiersData.text=arr1[8].citySoldier;
-        this.cityDefData.text=arr1[8].cityDefense;
-        this.lovalData.text=arr1[8].cityLoyal;
+        //var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[8].cityName;
+        this.moneyData.text=this.arrCity[8].cityMoney;
+        this.bunessData.text=this.arrCity[8].cityBussiness;
+        this.hayData.text=this.arrCity[8].cityFood;
+        this.farmData.text=this.arrCity[8].cityFarm;
+        this.soldiersData.text=this.arrCity[8].citySoldier;
+        this.cityDefData.text=this.arrCity[8].cityDefense;
+        this.lovalData.text=this.arrCity[8].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setXiaPi(){
        //var json=Laya.loader.getRes("midCity.json");
-        //var arr1=json["RECORDS"];
-        
-        this.cityName.text=this.arr1[9].cityName;
-        this.moneyData.text=this.arr1[9].cityMoney;
-        this.bunessData.text=this.arr1[9].cityBussiness;
-        this.hayData.text=this.arr1[9].cityFood;
-        this.farmData.text=this.arr1[9].cityFarm;
-        this.soldiersData.text=this.arr1[9].citySoldier;
-        this.cityDefData.text=this.arr1[9].cityDefense;
-        this.lovalData.text=this.arr1[9].cityLoyal;
+        //var this.arrCity=json["RECORDS"];
+        this.cityNum=9;
+        this.cityName.text=this.arrCity[9].cityName;
+        this.moneyData.text=this.arrCity[9].cityMoney;
+        this.bunessData.text=this.arrCity[9].cityBussiness;
+        this.hayData.text=this.arrCity[9].cityFood;
+        this.farmData.text=this.arrCity[9].cityFarm;
+        this.soldiersData.text=this.arrCity[9].citySoldier;
+        this.cityDefData.text=this.arrCity[9].cityDefense;
+        this.lovalData.text=this.arrCity[9].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setJianYe(){
        // var json=Laya.loader.getRes("midCity.json");
-        //var arr1=json["RECORDS"];
-        this.cityName.text=this.onStart.arr1[10].cityName;
-        this.moneyData.text=this.onStart.arr1[10].cityMoney;
-        this.bunessData.text=this.onStart.arr1[10].cityBussiness;
-        this.hayData.text=this.onStart.arr1[10].cityFood;
-        this.farmData.text=this.onStart.arr1[10].cityFarm;
-        this.soldiersData.text=this.onStart.arr1[10].citySoldier;
-        this.cityDefData.text=this.onStart.arr1[10].cityDefense;
-        this.lovalData.text=this.onStart.arr1[10].cityLoyal;
+        //var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[10].cityName;
+        this.moneyData.text=this.arrCity[10].cityMoney;
+        this.bunessData.text=this.arrCity[10].cityBussiness;
+        this.hayData.text=this.arrCity[10].cityFood;
+        this.farmData.text=this.arrCity[10].cityFarm;
+        this.soldiersData.text=this.arrCity[10].citySoldier;
+        this.cityDefData.text=this.arrCity[10].cityDefense;
+        this.lovalData.text=this.arrCity[10].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setZhongShan(){
         //var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[11].cityName;
-        this.moneyData.text=arr1[11].cityMoney;
-        this.bunessData.text=arr1[11].cityBussiness;
-        this.hayData.text=arr1[11].cityFood;
-        this.farmData.text=arr1[11].cityFarm;
-        this.soldiersData.text=arr1[11].citySoldier;
-        this.cityDefData.text=arr1[11].cityDefense;
-        this.lovalData.text=arr1[11].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[11].cityName;
+        this.moneyData.text=this.arrCity[11].cityMoney;
+        this.bunessData.text=this.arrCity[11].cityBussiness;
+        this.hayData.text=this.arrCity[11].cityFood;
+        this.farmData.text=this.arrCity[11].cityFarm;
+        this.soldiersData.text=this.arrCity[11].citySoldier;
+        this.cityDefData.text=this.arrCity[11].cityDefense;
+        this.lovalData.text=this.arrCity[11].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setGanLing(){
        // var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[12].cityName;
-        this.moneyData.text=arr1[12].cityMoney;
-        this.bunessData.text=arr1[12].cityBussiness;
-        this.hayData.text=arr1[12].cityFood;
-        this.farmData.text=arr1[12].cityFarm;
-        this.soldiersData.text=arr1[12].citySoldier;
-        this.cityDefData.text=arr1[12].cityDefense;
-        this.lovalData.text=arr1[12].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[12].cityName;
+        this.moneyData.text=this.arrCity[12].cityMoney;
+        this.bunessData.text=this.arrCity[12].cityBussiness;
+        this.hayData.text=this.arrCity[12].cityFood;
+        this.farmData.text=this.arrCity[12].cityFarm;
+        this.soldiersData.text=this.arrCity[12].citySoldier;
+        this.cityDefData.text=this.arrCity[12].cityDefense;
+        this.lovalData.text=this.arrCity[12].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setShouChun(){
         //var json=Laya.loader.getRes("midCity.json");
-        //var arr1=json["RECORDS"];
-        this.cityName.text=arr1[13].cityName;
-        this.moneyData.text=arr1[13].cityMoney;
-        this.bunessData.text=arr1[13].cityBussiness;
-        this.hayData.text=arr1[13].cityFood;
-        this.farmData.text=arr1[13].cityFarm;
-        this.soldiersData.text=arr1[13].citySoldier;
-        this.cityDefData.text=arr1[13].cityDefense;
-        this.lovalData.text=arr1[13].cityLoyal;
+        //var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[13].cityName;
+        this.moneyData.text=this.arrCity[13].cityMoney;
+        this.bunessData.text=this.arrCity[13].cityBussiness;
+        this.hayData.text=this.arrCity[13].cityFood;
+        this.farmData.text=this.arrCity[13].cityFarm;
+        this.soldiersData.text=this.arrCity[13].citySoldier;
+        this.cityDefData.text=this.arrCity[13].cityDefense;
+        this.lovalData.text=this.arrCity[13].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setLuJiang(){
        // var json=Laya.loader.getRes("midCity.json");
-        //var arr1=json["RECORDS"];
-        this.cityName.text=arr1[14].cityName;
-        this.moneyData.text=arr1[14].cityMoney;
-        this.bunessData.text=arr1[14].cityBussiness;
-        this.hayData.text=arr1[14].cityFood;
-        this.farmData.text=arr1[14].cityFarm;
-        this.soldiersData.text=arr1[14].citySoldier;
-        this.cityDefData.text=arr1[14].cityDefense;
-        this.lovalData.text=arr1[14].cityLoyal;
+        //var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[14].cityName;
+        this.moneyData.text=this.arrCity[14].cityMoney;
+        this.bunessData.text=this.arrCity[14].cityBussiness;
+        this.hayData.text=this.arrCity[14].cityFood;
+        this.farmData.text=this.arrCity[14].cityFarm;
+        this.soldiersData.text=this.arrCity[14].citySoldier;
+        this.cityDefData.text=this.arrCity[14].cityDefense;
+        this.lovalData.text=this.arrCity[14].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setJuLu(){
        // var json=Laya.loader.getRes("midCity.json");
-        //var arr1=json["RECORDS"];
-        this.cityName.text=arr1[15].cityName;
-        this.moneyData.text=arr1[15].cityMoney;
-        this.bunessData.text=arr1[15].cityBussiness;
-        this.hayData.text=arr1[15].cityFood;
-        this.farmData.text=arr1[15].cityFarm;
-        this.soldiersData.text=arr1[15].citySoldier;
-        this.cityDefData.text=arr1[15].cityDefense;
-        this.lovalData.text=arr1[15].cityLoyal;
+        //var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[15].cityName;
+        this.moneyData.text=this.arrCity[15].cityMoney;
+        this.bunessData.text=this.arrCity[15].cityBussiness;
+        this.hayData.text=this.arrCity[15].cityFood;
+        this.farmData.text=this.arrCity[15].cityFarm;
+        this.soldiersData.text=this.arrCity[15].citySoldier;
+        this.cityDefData.text=this.arrCity[15].cityDefense;
+        this.lovalData.text=this.arrCity[15].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setYe(){
         //var json=Laya.loader.getRes("midCity.json");
-        //var arr1=json["RECORDS"];
-        this.cityName.text=arr1[16].cityName;
-        this.moneyData.text=arr1[16].cityMoney;
-        this.bunessData.text=arr1[16].cityBussiness;
-        this.hayData.text=arr1[16].cityFood;
-        this.farmData.text=arr1[16].cityFarm;
-        this.soldiersData.text=arr1[16].citySoldier;
-        this.cityDefData.text=arr1[16].cityDefense;
-        this.lovalData.text=arr1[16].cityLoyal;
+        //var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[16].cityName;
+        this.moneyData.text=this.arrCity[16].cityMoney;
+        this.bunessData.text=this.arrCity[16].cityBussiness;
+        this.hayData.text=this.arrCity[16].cityFood;
+        this.farmData.text=this.arrCity[16].cityFarm;
+        this.soldiersData.text=this.arrCity[16].citySoldier;
+        this.cityDefData.text=this.arrCity[16].cityDefense;
+        this.lovalData.text=this.arrCity[16].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setPuYang(){
        // var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[17].cityName;
-        this.moneyData.text=arr1[17].cityMoney;
-        this.bunessData.text=arr1[17].cityBussiness;
-        this.hayData.text=arr1[17].cityFood;
-        this.farmData.text=arr1[17].cityFarm;
-        this.soldiersData.text=arr1[17].citySoldier;
-        this.cityDefData.text=arr1[17].cityDefense;
-        this.lovalData.text=arr1[17].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[17].cityName;
+        this.moneyData.text=this.arrCity[17].cityMoney;
+        this.bunessData.text=this.arrCity[17].cityBussiness;
+        this.hayData.text=this.arrCity[17].cityFood;
+        this.farmData.text=this.arrCity[17].cityFarm;
+        this.soldiersData.text=this.arrCity[17].citySoldier;
+        this.cityDefData.text=this.arrCity[17].cityDefense;
+        this.lovalData.text=this.arrCity[17].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setJiao(){
         //var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[18].cityName;
-        this.moneyData.text=arr1[18].cityMoney;
-        this.bunessData.text=arr1[18].cityBussiness;
-        this.hayData.text=arr1[18].cityFood;
-        this.farmData.text=arr1[18].cityFarm;
-        this.soldiersData.text=arr1[18].citySoldier;
-        this.cityDefData.text=arr1[18].cityDefense;
-        this.lovalData.text=arr1[18].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[18].cityName;
+        this.moneyData.text=this.arrCity[18].cityMoney;
+        this.bunessData.text=this.arrCity[18].cityBussiness;
+        this.hayData.text=this.arrCity[18].cityFood;
+        this.farmData.text=this.arrCity[18].cityFarm;
+        this.soldiersData.text=this.arrCity[18].citySoldier;
+        this.cityDefData.text=this.arrCity[18].cityDefense;
+        this.lovalData.text=this.arrCity[18].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setChenLiu(){
        // var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[19].cityName;
-        this.moneyData.text=arr1[19].cityMoney;
-        this.bunessData.text=arr1[19].cityBussiness;
-        this.hayData.text=arr1[19].cityFood;
-        this.farmData.text=arr1[19].cityFarm;
-        this.soldiersData.text=arr1[19].citySoldier;
-        this.cityDefData.text=arr1[19].cityDefense;
-        this.lovalData.text=arr1[19].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[19].cityName;
+        this.moneyData.text=this.arrCity[19].cityMoney;
+        this.bunessData.text=this.arrCity[19].cityBussiness;
+        this.hayData.text=this.arrCity[19].cityFood;
+        this.farmData.text=this.arrCity[19].cityFarm;
+        this.soldiersData.text=this.arrCity[19].citySoldier;
+        this.cityDefData.text=this.arrCity[19].cityDefense;
+        this.lovalData.text=this.arrCity[19].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setJinYan(){
        // var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[20].cityName;
-        this.moneyData.text=arr1[20].cityMoney;
-        this.bunessData.text=arr1[20].cityBussiness;
-        this.hayData.text=arr1[20].cityFood;
-        this.farmData.text=arr1[20].cityFarm;
-        this.soldiersData.text=arr1[20].citySoldier;
-        this.cityDefData.text=arr1[20].cityDefense;
-        this.lovalData.text=arr1[20].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[20].cityName;
+        this.moneyData.text=this.arrCity[20].cityMoney;
+        this.bunessData.text=this.arrCity[20].cityBussiness;
+        this.hayData.text=this.arrCity[20].cityFood;
+        this.farmData.text=this.arrCity[20].cityFarm;
+        this.soldiersData.text=this.arrCity[20].citySoldier;
+        this.cityDefData.text=this.arrCity[20].cityDefense;
+        this.lovalData.text=this.arrCity[20].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setShangTan(){
       //  var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[21].cityName;
-        this.moneyData.text=arr1[21].cityMoney;
-        this.bunessData.text=arr1[21].cityBussiness;
-        this.hayData.text=arr1[21].cityFood;
-        this.farmData.text=arr1[21].cityFarm;
-        this.soldiersData.text=arr1[21].citySoldier;
-        this.cityDefData.text=arr1[21].cityDefense;
-        this.lovalData.text=arr1[21].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[21].cityName;
+        this.moneyData.text=this.arrCity[21].cityMoney;
+        this.bunessData.text=this.arrCity[21].cityBussiness;
+        this.hayData.text=this.arrCity[21].cityFood;
+        this.farmData.text=this.arrCity[21].cityFarm;
+        this.soldiersData.text=this.arrCity[21].citySoldier;
+        this.cityDefData.text=this.arrCity[21].cityDefense;
+        this.lovalData.text=this.arrCity[21].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setHeNei(){
         //var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[22].cityName;
-        this.moneyData.text=arr1[22].cityMoney;
-        this.bunessData.text=arr1[22].cityBussiness;
-        this.hayData.text=arr1[22].cityFood;
-        this.farmData.text=arr1[22].cityFarm;
-        this.soldiersData.text=arr1[22].citySoldier;
-        this.cityDefData.text=arr1[22].cityDefense;
-        this.lovalData.text=arr1[22].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[22].cityName;
+        this.moneyData.text=this.arrCity[22].cityMoney;
+        this.bunessData.text=this.arrCity[22].cityBussiness;
+        this.hayData.text=this.arrCity[22].cityFood;
+        this.farmData.text=this.arrCity[22].cityFarm;
+        this.soldiersData.text=this.arrCity[22].citySoldier;
+        this.cityDefData.text=this.arrCity[22].cityDefense;
+        this.lovalData.text=this.arrCity[22].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setXuChan(){
        // var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[23].cityName;
-        this.moneyData.text=arr1[23].cityMoney;
-        this.bunessData.text=arr1[23].cityBussiness;
-        this.hayData.text=arr1[23].cityFood;
-        this.farmData.text=arr1[23].cityFarm;
-        this.soldiersData.text=arr1[23].citySoldier;
-        this.cityDefData.text=arr1[23].cityDefense;
-        this.lovalData.text=arr1[23].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[23].cityName;
+        this.moneyData.text=this.arrCity[23].cityMoney;
+        this.bunessData.text=this.arrCity[23].cityBussiness;
+        this.hayData.text=this.arrCity[23].cityFood;
+        this.farmData.text=this.arrCity[23].cityFarm;
+        this.soldiersData.text=this.arrCity[23].citySoldier;
+        this.cityDefData.text=this.arrCity[23].cityDefense;
+        this.lovalData.text=this.arrCity[23].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setRuNan(){
        // var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[24].cityName;
-        this.moneyData.text=arr1[24].cityMoney;
-        this.bunessData.text=arr1[24].cityBussiness;
-        this.hayData.text=arr1[24].cityFood;
-        this.farmData.text=arr1[24].cityFarm;
-        this.soldiersData.text=arr1[24].citySoldier;
-        this.cityDefData.text=arr1[24].cityDefense;
-        this.lovalData.text=arr1[24].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[24].cityName;
+        this.moneyData.text=this.arrCity[24].cityMoney;
+        this.bunessData.text=this.arrCity[24].cityBussiness;
+        this.hayData.text=this.arrCity[24].cityFood;
+        this.farmData.text=this.arrCity[24].cityFarm;
+        this.soldiersData.text=this.arrCity[24].citySoldier;
+        this.cityDefData.text=this.arrCity[24].cityDefense;
+        this.lovalData.text=this.arrCity[24].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setJiangXia(){
        // var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[25].cityName;
-        this.moneyData.text=arr1[25].cityMoney;
-        this.bunessData.text=arr1[25].cityBussiness;
-        this.hayData.text=arr1[25].cityFood;
-        this.farmData.text=arr1[25].cityFarm;
-        this.soldiersData.text=arr1[25].citySoldier;
-        this.cityDefData.text=arr1[25].cityDefense;
-        this.lovalData.text=arr1[25].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[25].cityName;
+        this.moneyData.text=this.arrCity[25].cityMoney;
+        this.bunessData.text=this.arrCity[25].cityBussiness;
+        this.hayData.text=this.arrCity[25].cityFood;
+        this.farmData.text=this.arrCity[25].cityFarm;
+        this.soldiersData.text=this.arrCity[25].citySoldier;
+        this.cityDefData.text=this.arrCity[25].cityDefense;
+        this.lovalData.text=this.arrCity[25].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setLuoYan(){
        // var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[26].cityName;
-        this.moneyData.text=arr1[26].cityMoney;
-        this.bunessData.text=arr1[26].cityBussiness;
-        this.hayData.text=arr1[26].cityFood;
-        this.farmData.text=arr1[26].cityFarm;
-        this.soldiersData.text=arr1[26].citySoldier;
-        this.cityDefData.text=arr1[26].cityDefense;
-        this.lovalData.text=arr1[26].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[26].cityName;
+        this.moneyData.text=this.arrCity[26].cityMoney;
+        this.bunessData.text=this.arrCity[26].cityBussiness;
+        this.hayData.text=this.arrCity[26].cityFood;
+        this.farmData.text=this.arrCity[26].cityFarm;
+        this.soldiersData.text=this.arrCity[26].citySoldier;
+        this.cityDefData.text=this.arrCity[26].cityDefense;
+        this.lovalData.text=this.arrCity[26].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setWan(){
        // var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[27].cityName;
-        this.moneyData.text=arr1[27].cityMoney;
-        this.bunessData.text=arr1[27].cityBussiness;
-        this.hayData.text=arr1[27].cityFood;
-        this.farmData.text=arr1[27].cityFarm;
-        this.soldiersData.text=arr1[27].citySoldier;
-        this.cityDefData.text=arr1[27].cityDefense;
-        this.lovalData.text=arr1[27].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[27].cityName;
+        this.moneyData.text=this.arrCity[27].cityMoney;
+        this.bunessData.text=this.arrCity[27].cityBussiness;
+        this.hayData.text=this.arrCity[27].cityFood;
+        this.farmData.text=this.arrCity[27].cityFarm;
+        this.soldiersData.text=this.arrCity[27].citySoldier;
+        this.cityDefData.text=this.arrCity[27].cityDefense;
+        this.lovalData.text=this.arrCity[27].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setXinYe(){
        // var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[28].cityName;
-        this.moneyData.text=arr1[28].cityMoney;
-        this.bunessData.text=arr1[28].cityBussiness;
-        this.hayData.text=arr1[28].cityFood;
-        this.farmData.text=arr1[28].cityFarm;
-        this.soldiersData.text=arr1[28].citySoldier;
-        this.cityDefData.text=arr1[28].cityDefense;
-        this.lovalData.text=arr1[28].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[28].cityName;
+        this.moneyData.text=this.arrCity[28].cityMoney;
+        this.bunessData.text=this.arrCity[28].cityBussiness;
+        this.hayData.text=this.arrCity[28].cityFood;
+        this.farmData.text=this.arrCity[28].cityFarm;
+        this.soldiersData.text=this.arrCity[28].citySoldier;
+        this.cityDefData.text=this.arrCity[28].cityDefense;
+        this.lovalData.text=this.arrCity[28].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setHongNong(){
        // var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[29].cityName;
-        this.moneyData.text=arr1[29].cityMoney;
-        this.bunessData.text=arr1[29].cityBussiness;
-        this.hayData.text=arr1[29].cityFood;
-        this.farmData.text=arr1[29].cityFarm;
-        this.soldiersData.text=arr1[29].citySoldier;
-        this.cityDefData.text=arr1[29].cityDefense;
-        this.lovalData.text=arr1[29].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[29].cityName;
+        this.moneyData.text=this.arrCity[29].cityMoney;
+        this.bunessData.text=this.arrCity[29].cityBussiness;
+        this.hayData.text=this.arrCity[29].cityFood;
+        this.farmData.text=this.arrCity[29].cityFarm;
+        this.soldiersData.text=this.arrCity[29].citySoldier;
+        this.cityDefData.text=this.arrCity[29].cityDefense;
+        this.lovalData.text=this.arrCity[29].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setXianYan(){
        // var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[30].cityName;
-        this.moneyData.text=arr1[30].cityMoney;
-        this.bunessData.text=arr1[30].cityBussiness;
-        this.hayData.text=arr1[30].cityFood;
-        this.farmData.text=arr1[30].cityFarm;
-        this.soldiersData.text=arr1[30].citySoldier;
-        this.cityDefData.text=arr1[30].cityDefense;
-        this.lovalData.text=arr1[30].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[30].cityName;
+        this.moneyData.text=this.arrCity[30].cityMoney;
+        this.bunessData.text=this.arrCity[30].cityBussiness;
+        this.hayData.text=this.arrCity[30].cityFood;
+        this.farmData.text=this.arrCity[30].cityFarm;
+        this.soldiersData.text=this.arrCity[30].citySoldier;
+        this.cityDefData.text=this.arrCity[30].cityDefense;
+        this.lovalData.text=this.arrCity[30].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setJiangLing(){
        // var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[31].cityName;
-        this.moneyData.text=arr1[31].cityMoney;
-        this.bunessData.text=arr1[31].cityBussiness;
-        this.hayData.text=arr1[31].cityFood;
-        this.farmData.text=arr1[31].cityFarm;
-        this.soldiersData.text=arr1[31].citySoldier;
-        this.cityDefData.text=arr1[31].cityDefense;
-        this.lovalData.text=arr1[31].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[31].cityName;
+        this.moneyData.text=this.arrCity[31].cityMoney;
+        this.bunessData.text=this.arrCity[31].cityBussiness;
+        this.hayData.text=this.arrCity[31].cityFood;
+        this.farmData.text=this.arrCity[31].cityFarm;
+        this.soldiersData.text=this.arrCity[31].citySoldier;
+        this.cityDefData.text=this.arrCity[31].cityDefense;
+        this.lovalData.text=this.arrCity[31].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
+        
     }
     setChangAn(){
        // var json=Laya.loader.getRes("midCity.json");
-       // var arr1=json["RECORDS"];
-        this.cityName.text=arr1[32].cityName;
-        this.moneyData.text=arr1[32].cityMoney;
-        this.bunessData.text=arr1[32].cityBussiness;
-        this.hayData.text=arr1[32].cityFood;
-        this.farmData.text=arr1[32].cityFarm;
-        this.soldiersData.text=arr1[32].citySoldier;
-        this.cityDefData.text=arr1[32].cityDefense;
-        this.lovalData.text=arr1[32].cityLoyal;
+       // var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[32].cityName;
+        this.moneyData.text=this.arrCity[32].cityMoney;
+        this.bunessData.text=this.arrCity[32].cityBussiness;
+        this.hayData.text=this.arrCity[32].cityFood;
+        this.farmData.text=this.arrCity[32].cityFarm;
+        this.soldiersData.text=this.arrCity[32].citySoldier;
+        this.cityDefData.text=this.arrCity[32].cityDefense;
+        this.lovalData.text=this.arrCity[32].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setShangYong(){
        // var json=Laya.loader.getRes("midCity.json");
-        var arr1=json["RECORDS"];
-        this.cityName.text=arr1[33].cityName;
-        this.moneyData.text=arr1[33].cityMoney;
-        this.bunessData.text=arr1[33].cityBussiness;
-        this.hayData.text=arr1[33].cityFood;
-        this.farmData.text=arr1[33].cityFarm;
-        this.soldiersData.text=arr1[33].citySoldier;
-        this.cityDefData.text=arr1[33].cityDefense;
-        this.lovalData.text=arr1[33].cityLoyal;
+        //var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[33].cityName;
+        this.moneyData.text=this.arrCity[33].cityMoney;
+        this.bunessData.text=this.arrCity[33].cityBussiness;
+        this.hayData.text=this.arrCity[33].cityFood;
+        this.farmData.text=this.arrCity[33].cityFarm;
+        this.soldiersData.text=this.arrCity[33].citySoldier;
+        this.cityDefData.text=this.arrCity[33].cityDefense;
+        this.lovalData.text=this.arrCity[33].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     setYongAn(){
        // var json=Laya.loader.getRes("midCity.json");
-      //  var arr1=json["RECORDS"];
-        this.cityName.text=arr1[34].cityName;
-        this.moneyData.text=arr1[34].cityMoney;
-        this.bunessData.text=arr1[34].cityBussiness;
-        this.hayData.text=arr1[34].cityFood;
-        this.farmData.text=arr1[34].cityFarm;
-        this.soldiersData.text=arr1[34].citySoldier;
-        this.cityDefData.text=arr1[34].cityDefense;
-        this.lovalData.text=arr1[34].cityLoyal;
+      //  var this.arrCity=json["RECORDS"];
+        this.cityName.text=this.arrCity[34].cityName;
+        this.moneyData.text=this.arrCity[34].cityMoney;
+        this.bunessData.text=this.arrCity[34].cityBussiness;
+        this.hayData.text=this.arrCity[34].cityFood;
+        this.farmData.text=this.arrCity[34].cityFarm;
+        this.soldiersData.text=this.arrCity[34].citySoldier;
+        this.cityDefData.text=this.arrCity[34].cityDefense;
+        this.lovalData.text=this.arrCity[34].cityLoyal;
         this.farmDeve.on(Laya.Event.CLICK,this,this.farmAdd);
     }
     //第一次点击城市隐藏以打开的下方菜单，打开顶部信息
@@ -622,9 +631,10 @@ import Citys from "../GameIn/Citys";
     }
     //农田开发
     farmAdd(){
-           let data = Number(this.farmData.text);
-           data+=5;
-           this.farmData.text=data;
+        let data = Number(this.arrCity[this.cityNum].cityFarm);
+        data+=5;
+        this.farmData.text=data;
+        this.arrCity[this.cityNum].cityFarm=data;
     }
     //商业开发
     bussinessAdd(){}
