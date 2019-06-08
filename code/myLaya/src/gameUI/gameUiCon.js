@@ -8,14 +8,28 @@ import Factions from "../GameIn/Factions";
     constructor() { 
         super(); 
         this.loadScene("gameMain/gameMain");
+        //全局变量
         this.cityNum;
         this.personNum={};
         this.arrCity=[];
-        Laya.loader.load("midCity.json",Laya.Handler.create(this,this.onCityStart),null,Laya.loader.JSON);
         this.arrFaction=[];
-        Laya.loader.load("midFaction.json",Laya.Handler.create(this,this.onFactionStart),null,Laya.loader.JSON);
         this.arrPerson=[];
-        Laya.loader.load("midPerson.json",Laya.Handler.create(this,this.onPersonStart),null,Laya.loader.JSON);
+        this.nowDate=[];
+        this.isNew=1;
+        //新游戏读数据
+        if(this.isNew==1){
+            Laya.loader.load("midCity.json",Laya.Handler.create(this,this.onCityStart),null,Laya.loader.JSON);
+            Laya.loader.load("midFaction.json",Laya.Handler.create(this,this.onFactionStart),null,Laya.loader.JSON);
+            Laya.loader.load("midPerson.json",Laya.Handler.create(this,this.onPersonStart),null,Laya.loader.JSON);
+            this.isNew=0;
+            this.nowDate=[184,1];
+        }
+        //读取游戏读本地缓存
+        else{
+            ;
+        }
+        
+
     }
 
     onCityStart(){
@@ -683,7 +697,6 @@ import Factions from "../GameIn/Factions";
             this.topData.visible=false;
             this.perList.visible=false;
     }
-    //农田开发
     personOpen(){
         this.interiorMenu.visible=false;
         this.perList.visible=true;
@@ -691,7 +704,7 @@ import Factions from "../GameIn/Factions";
         let citPerson=[];
         let personData=[];
         for(let j=0;j<220;j++){
-                if(this.arrPerson[j].personCityID==this.arrCity[this.cityNum].cityID){
+                if(this.arrPerson[j].personCityID==this.arrCity[this.cityNum].cityID&&this.arrPerson[j].personState==1){
                     citPerson[perCount]=this.arrPerson[j];
                     perCount++;
                 }   
@@ -710,8 +723,12 @@ import Factions from "../GameIn/Factions";
         }
         
         this.perList.dataSource=personData;
+        //this.personCho.on(Laya.Event.CLICK,this,this.farmAdd);
+        //索引找到选择武将
+        //引用farmAdd()
         
     }
+     //农田开发
     farmAdd(){
         let data = Number(this.arrCity[this.cityNum].cityFarm);
         data+=5;
@@ -719,7 +736,13 @@ import Factions from "../GameIn/Factions";
         this.arrCity[this.cityNum].cityFarm=data;
     }
     //商业开发
-    bussinessAdd(){}
+    bussinessAdd(){
+
+    }
+    //出征
+    //输送
+    //征兵
+
     //粮草买卖
     foodChange(){}
     //提高民忠
@@ -734,4 +757,8 @@ import Factions from "../GameIn/Factions";
     bussinessDec(){}
     //减低农业
     farmDec(){}
+    //褒奖
+    //移动
+    //流放
+    //登庸
 }
