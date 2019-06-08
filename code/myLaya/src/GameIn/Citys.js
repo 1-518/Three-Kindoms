@@ -8,7 +8,7 @@ import personState from "./Persons";
 
  export default class Citys {
 
-   constructor(cityID,cityName,cityFood,cityFarm,cityMoney,cityBussiness,cityDefense,citySoldier,cityLoyal,cityBelongFactionID){
+   constructor(cityID,cityName,cityFood,cityFarm,cityMoney,cityBussiness,cityDefense,citySoldier,cityLoyal,cityBelongFactionID,cityConnCityID){
     this.cityID=cityID;
     this.cityName=cityName;
     this.cityFood=cityFood;
@@ -19,6 +19,7 @@ import personState from "./Persons";
     this.citySoldier=citySoldier;
     this.cityLoyal=cityLoyal;
     this.cityBelongFactionID=cityBelongFactionID;
+    this.cityConnCityID=cityConnCityID;
 }
 
     
@@ -94,6 +95,14 @@ import personState from "./Persons";
          return this.cityBelongFactionID;
      }
 
+     set cityConnCityID(cityConnCityID) {
+        this.cityConnCityID = cityConnCityID;
+    } 
+
+      get cityConnCityID() {
+        return this.cityConnCityID;
+    }
+
     cityChangeFood(){
          //粮草改变
          this.cityFood+=this.cityFarm;
@@ -104,6 +113,7 @@ import personState from "./Persons";
          this.cityMoney=100-Persons.personCommand*Persons.personMilitary;
          this.cityFarm+=Persons.personCommand+Persons.personMilitary;
          Persons.personState=-1;
+         
      }
 
      cityChangeMoney(){

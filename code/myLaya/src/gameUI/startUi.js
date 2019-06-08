@@ -12,6 +12,7 @@ export default class startUi extends Laya.Scene {
     onpenLoadList(){
         this.loadList.visible=true;
         this.newGame.disabled=true;
+        
     }
     //关闭读档界面，恢复新游戏按钮
     closeLoad(){
