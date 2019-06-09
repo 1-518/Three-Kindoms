@@ -723,15 +723,32 @@ import Factions from "../GameIn/Factions";
         }
         
         this.perList.dataSource=personData;
-        //this.personCho.on(Laya.Event.CLICK,this,this.farmAdd);
         //索引找到选择武将
         //引用farmAdd()
+        this.perList.mouseHandler=new Laya.Handler(this,this.farmAdd);
         
     }
      //农田开发
-    farmAdd(){
+    farmAdd(e,index){
+        let citPerson=[];
+        let perCount=0;
+        for(let j=0;j<220;j++){
+            if(this.arrPerson[j].personCityID==this.arrCity[this.cityNum].cityID&&this.arrPerson[j].personState==1){
+                citPerson[perCount]=this.arrPerson[j];
+                perCount++;
+                
+            }   
+    }
+        let perData=citPerson[index];
         let data = Number(this.arrCity[this.cityNum].cityFarm);
-        data+=5;
+        if(e.type==Laya.Event.CLICK){
+            if((e.target)instanceof Laya.Button){
+                data+=Number(perData.personPolitics);
+                perData.personState=0;
+                console.log(this.perList.dataSource);
+            }
+        }
+        
         this.farmData.text=data;
         this.arrCity[this.cityNum].cityFarm=data;
     }
