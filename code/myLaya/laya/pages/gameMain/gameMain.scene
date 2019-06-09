@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"Scene",
-    "selectedBox":96,
-    "selecteID":97,
+    "selectedBox":165,
+    "selecteID":192,
     "searchKey":"Scene",
     "props":{"width":1136,"sceneColor":"#000000","runtime":"gameUI/gameUiCon.js","height":640},
     "nodeParent":-1,
-    "maxID":188,
+    "maxID":193,
     "label":"Scene",
     "isOpen":true,
     "isDirectory":true,
@@ -1511,7 +1511,7 @@
                                 ]
                         }]
                 }],
-            "$HIDDEN":true
+            "$HIDDEN":false
         }],
     "animations":[
         {
