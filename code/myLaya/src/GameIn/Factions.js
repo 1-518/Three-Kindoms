@@ -1,11 +1,13 @@
+import Persons from "./Persons";
+import Citys from "./Citys";
+
 
  export default class Factions {
 
-    constructor(FactionID,FactionName,FactionLeaderPersonID,FactionCapitalID){
+    constructor(FactionID,FactionName,FactionLeaderPersonID){
         this.FactionID=FactionID;
         this.FactionName=FactionName;
         this.FactionLeaderPersonID=FactionLeaderPersonID;
-        this.FactionCapitalID=FactionCapitalID;
     }  
 
       set FactionID( FactionID) {
@@ -29,19 +31,13 @@
           return this.FactionLeaderPersonID;
       }
  
-      set FactionCapitalID( FactionCapitalID) {
-          this.FactionCapitalID = FactionCapitalID;
-      }
-      get FactionCapitalID() {
-          return this.FactionCapitalID;
-      }
       
-      FactionChangeLeaderPersonID( number){
+      FactionChangeLeaderPersonID(Persons ){
           //势力主公武将更换
-          Faction.FactionLeaderPersonID=number;
+          this.FactionLeaderPersonID=Persons;
       }
-      FactionChangeCapitalID( number){
+      FactionChangeCapitalID( Citys){
           //势力首都城池更换
-          Faction.FactionCapitalID=number;
+          this.FactionCapitalID=Citys;
       }
  }
