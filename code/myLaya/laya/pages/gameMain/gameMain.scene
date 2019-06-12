@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"Scene",
-    "selectedBox":165,
-    "selecteID":192,
+    "selectedBox":2,
+    "selecteID":19,
     "searchKey":"Scene",
     "props":{"width":1136,"sceneColor":"#000000","runtime":"gameUI/gameUiCon.js","height":640},
     "nodeParent":-1,
-    "maxID":193,
+    "maxID":211,
     "label":"Scene",
     "isOpen":true,
     "isDirectory":true,
@@ -849,39 +849,24 @@
                 },
                 {
                     "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,next",
-                    "props":{"x":862,"width":200,"var":"next","skin":"comp/button.png","pivotX":88,"label":"下一回合","height":73},
-                    "nodeParent":96,
-                    "label":"next",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":19,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
                     "type":"Box",
                     "searchKey":"Box,menu",
                     "props":{"y":-75,"x":176,"var":"menu"},
                     "nodeParent":96,
                     "label":"menu",
-                    "isOpen":true,
+                    "isOpen":false,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":97,
                     "child":[
                         {
-                            "x":45,
                             "type":"Box",
                             "searchKey":"Box,militaryMenu",
                             "props":{"x":-174,"visible":false,"var":"militaryMenu"},
                             "nodeParent":97,
                             "label":"militaryMenu",
-                            "isOpen":false,
+                            "isOpen":true,
                             "isDirectory":true,
                             "isAniNode":true,
                             "hasChild":true,
@@ -931,13 +916,12 @@
                             "$HIDDEN":true
                         },
                         {
-                            "x":45,
                             "type":"Box",
                             "searchKey":"Box,interiorMenu",
                             "props":{"x":-4,"visible":false,"var":"interiorMenu"},
                             "nodeParent":97,
                             "label":"interiorMenu",
-                            "isOpen":false,
+                            "isOpen":true,
                             "isDirectory":true,
                             "isAniNode":true,
                             "hasChild":true,
@@ -968,7 +952,8 @@
                                     "hasChild":false,
                                     "compId":21,
                                     "child":[
-                                        ]
+                                        ],
+                                    "$HIDDEN":false
                                 },
                                 {
                                     "type":"Button",
@@ -995,12 +980,27 @@
                                     "hasChild":false,
                                     "compId":23,
                                     "child":[
-                                        ]
+                                        ],
+                                    "$HIDDEN":false
+                                },
+                                {
+                                    "type":"Button",
+                                    "searchKey":"Button,defenceAdd",
+                                    "props":{"y":0,"x":606,"width":110,"var":"defenceAdd","skin":"comp/button.png","label":"提高城防","height":47},
+                                    "nodeParent":25,
+                                    "label":"defenceAdd",
+                                    "isOpen":true,
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":194,
+                                    "child":[
+                                        ],
+                                    "$HIDDEN":false
                                 }],
                             "$HIDDEN":true
                         },
                         {
-                            "x":45,
                             "type":"Box",
                             "searchKey":"Box,tricksMenu",
                             "props":{"x":-160,"visible":false,"var":"tricksMenu"},
@@ -1080,31 +1080,17 @@
                             "$HIDDEN":true
                         },
                         {
-                            "x":45,
                             "type":"Box",
                             "searchKey":"Box,personnelMenu",
                             "props":{"visible":false,"var":"personnelMenu"},
                             "nodeParent":97,
                             "label":"personnelMenu",
-                            "isOpen":false,
+                            "isOpen":true,
                             "isDirectory":true,
                             "isAniNode":true,
                             "hasChild":true,
                             "compId":39,
                             "child":[
-                                {
-                                    "type":"Button",
-                                    "searchKey":"Button,appoint",
-                                    "props":{"y":0,"x":0,"width":110,"var":"appoint","skin":"comp/button.png","label":"任命"},
-                                    "nodeParent":39,
-                                    "label":"appoint",
-                                    "isDirectory":false,
-                                    "isAniNode":true,
-                                    "hasChild":false,
-                                    "compId":38,
-                                    "child":[
-                                        ]
-                                },
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,praise",
@@ -1157,11 +1143,25 @@
                                     "child":[
                                         ]
                                 }],
-                            "$HIDDEN":true
+                            "$HIDDEN":false
                         }],
                     "$HIDDEN":false
+                },
+                {
+                    "x":30,
+                    "type":"Button",
+                    "searchKey":"Button,next1",
+                    "props":{"y":0,"x":862,"width":200,"var":"next1","skin":"comp/button.png","pivotX":88,"label":"下一回合","height":73},
+                    "nodeParent":96,
+                    "label":"next1",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":19,
+                    "child":[
+                        ]
                 }],
-            "$HIDDEN":false
+            "$HIDDEN":true
         },
         {
             "x":15,
@@ -1170,19 +1170,20 @@
             "props":{"y":201,"x":70,"width":1028,"visible":false,"var":"infList","vScrollBarSkin":"comp/vscroll.png","spaceY":15,"repeatY":6,"repeatX":1,"height":259,"gray":false,"disabled":false},
             "nodeParent":2,
             "label":"infList",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":60,
             "child":[
                 {
+                    "x":30,
                     "type":"Box",
                     "searchKey":"Box",
                     "props":{"y":14,"x":96,"width":816,"visible":true,"renderType":"render","height":75,"alpha":1},
                     "nodeParent":60,
                     "label":"Box",
-                    "isOpen":true,
+                    "isOpen":false,
                     "isDirectory":true,
                     "isAniNode":false,
                     "hasChild":true,
@@ -1359,14 +1360,13 @@
             "props":{"y":183,"x":116,"width":871,"visible":false,"var":"perList","vScrollBarSkin":"comp/vscroll.png","spaceY":30,"repeatY":3,"repeatX":1,"height":324},
             "nodeParent":2,
             "label":"perList",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":166,
             "child":[
                 {
-                    "x":30,
                     "type":"Box",
                     "searchKey":"Box",
                     "props":{"y":0,"x":0,"width":852,"renderType":"render","height":98},
@@ -1379,7 +1379,6 @@
                     "compId":165,
                     "child":[
                         {
-                            "x":45,
                             "type":"Sprite",
                             "searchKey":"Sprite",
                             "props":{"y":0,"x":91.02197265625,"width":107,"texture":"three/框框.png","height":107},
@@ -1394,7 +1393,6 @@
                             "$LOCKED":true
                         },
                         {
-                            "x":45,
                             "type":"Sprite",
                             "searchKey":"Sprite",
                             "props":{"y":12,"x":198,"width":638,"texture":"three/timg (1).png","height":84},
@@ -1408,7 +1406,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "searchKey":"Label,personMilitary",
                             "props":{"y":40,"x":368.95458984375,"text":"label","name":"personMilitary","fontSize":27},
@@ -1423,7 +1420,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Button",
                             "searchKey":"Button,personCho,personCho",
                             "props":{"y":15,"x":14,"width":76,"var":"personCho","skin":"comp/button.png","name":"personCho","label":"选择","height":69},
@@ -1437,7 +1433,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "searchKey":"Label,personPolitics",
                             "props":{"y":40.5,"x":488.477294921875,"text":"label","name":"personPolitics","fontSize":27},
@@ -1451,7 +1446,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "searchKey":"Label,personName",
                             "props":{"y":33,"x":105.02197265625,"width":79,"valign":"middle","name":"personName","height":42,"fontSize":27,"align":"center"},
@@ -1466,7 +1460,6 @@
                             "$LOCKED":true
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "searchKey":"Label,personTrick",
                             "props":{"y":40,"x":602,"text":"label","name":"personTrick","fontSize":27},
@@ -1481,7 +1474,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "searchKey":"Label,personLoyal",
                             "props":{"y":40.5,"x":709,"text":"label","name":"personLoyal","fontSize":27},
@@ -1496,7 +1488,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "searchKey":"Label,personCommand",
                             "props":{"y":40,"x":246,"text":"label","name":"personCommand","fontSize":27},
@@ -1511,7 +1502,195 @@
                                 ]
                         }]
                 }],
-            "$HIDDEN":false
+            "$HIDDEN":true
+        },
+        {
+            "x":15,
+            "type":"List",
+            "searchKey":"List,otherCityList",
+            "props":{"y":256,"x":146,"width":995,"visible":false,"var":"otherCityList","vScrollBarSkin":"comp/vscroll.png","spaceY":20,"repeatY":6,"repeatX":1,"height":404},
+            "nodeParent":2,
+            "label":"otherCityList",
+            "isOpen":false,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":210,
+            "child":[
+                {
+                    "type":"Box",
+                    "searchKey":"Box",
+                    "props":{"width":951,"visible":true,"renderType":"render","height":75,"alpha":1},
+                    "nodeParent":210,
+                    "label":"Box",
+                    "isOpen":false,
+                    "isDirectory":true,
+                    "isAniNode":false,
+                    "hasChild":true,
+                    "compId":197,
+                    "child":[
+                        {
+                            "type":"Sprite",
+                            "searchKey":"Sprite",
+                            "props":{"y":12.5,"x":0,"width":50,"texture":"three/框框.png","height":50},
+                            "nodeParent":197,
+                            "label":"Sprite",
+                            "isDirectory":false,
+                            "isAniNode":false,
+                            "hasChild":false,
+                            "compId":198,
+                            "child":[
+                                ],
+                            "$LOCKED":true
+                        },
+                        {
+                            "type":"Sprite",
+                            "searchKey":"Sprite",
+                            "props":{"y":0,"x":50,"texture":"three/框框.png"},
+                            "nodeParent":197,
+                            "label":"Sprite",
+                            "isDirectory":false,
+                            "isAniNode":false,
+                            "hasChild":false,
+                            "compId":199,
+                            "child":[
+                                ],
+                            "$LOCKED":true
+                        },
+                        {
+                            "type":"Sprite",
+                            "searchKey":"Sprite",
+                            "props":{"y":3,"x":124,"width":827,"texture":"three/timg (1).png","height":64},
+                            "nodeParent":197,
+                            "label":"Sprite",
+                            "isDirectory":false,
+                            "isAniNode":false,
+                            "hasChild":false,
+                            "compId":200,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "type":"Label",
+                            "searchKey":"Label,allCityName",
+                            "props":{"y":19,"x":57,"width":59,"valign":"middle","text":"label","name":"allCityName","height":35,"fontSize":20,"color":"#ffffff","bold":true,"align":"center"},
+                            "nodeParent":197,
+                            "label":"allCityName",
+                            "isDirectory":false,
+                            "isAniNode":false,
+                            "hasChild":false,
+                            "compId":201,
+                            "child":[
+                                ],
+                            "$LOCKED":false
+                        },
+                        {
+                            "type":"Label",
+                            "searchKey":"Label,allCityFaction",
+                            "props":{"y":25,"x":6,"width":38,"valign":"middle","text":"label","name":"allCityFaction","height":22,"color":"#ffffff","align":"center"},
+                            "nodeParent":197,
+                            "label":"allCityFaction",
+                            "isOpen":true,
+                            "isDirectory":false,
+                            "isAniNode":false,
+                            "hasChild":false,
+                            "compId":202,
+                            "child":[
+                                ],
+                            "$LOCKED":true
+                        },
+                        {
+                            "type":"Label",
+                            "searchKey":"Label,allCityMoney",
+                            "props":{"y":19,"x":148,"text":"金钱:100","name":"allCityMoney","fontSize":25},
+                            "nodeParent":197,
+                            "label":"allCityMoney",
+                            "isDirectory":false,
+                            "isAniNode":false,
+                            "hasChild":false,
+                            "compId":203,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "type":"Label",
+                            "searchKey":"Label,allCityBus",
+                            "props":{"y":19,"x":258,"text":"商业:100","name":"allCityBus","fontSize":25},
+                            "nodeParent":197,
+                            "label":"allCityBus",
+                            "isDirectory":false,
+                            "isAniNode":false,
+                            "hasChild":false,
+                            "compId":204,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "type":"Label",
+                            "searchKey":"Label,allCityFood",
+                            "props":{"y":19,"x":368,"text":"粮草:100","name":"allCityFood","fontSize":25},
+                            "nodeParent":197,
+                            "label":"allCityFood",
+                            "isDirectory":false,
+                            "isAniNode":false,
+                            "hasChild":false,
+                            "compId":205,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "type":"Label",
+                            "searchKey":"Label,allCityFarm",
+                            "props":{"y":19,"x":720,"text":"城防:100","name":"allCityFarm","fontSize":25},
+                            "nodeParent":197,
+                            "label":"allCityFarm",
+                            "isDirectory":false,
+                            "isAniNode":false,
+                            "hasChild":false,
+                            "compId":206,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "type":"Label",
+                            "searchKey":"Label,allCitySol",
+                            "props":{"y":19,"x":478,"text":"农业:100","name":"allCitySol","fontSize":25},
+                            "nodeParent":197,
+                            "label":"allCitySol",
+                            "isDirectory":false,
+                            "isAniNode":false,
+                            "hasChild":false,
+                            "compId":207,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "type":"Label",
+                            "searchKey":"Label,allCityDef",
+                            "props":{"y":19,"x":599,"width":112,"text":"兵力:1000","name":"allCityDef","height":31,"fontSize":25},
+                            "nodeParent":197,
+                            "label":"allCityDef",
+                            "isDirectory":false,
+                            "isAniNode":false,
+                            "hasChild":false,
+                            "compId":208,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "type":"Label",
+                            "searchKey":"Label,allCityLoy",
+                            "props":{"y":19,"x":826,"text":"民忠:100","name":"allCityLoy","fontSize":25},
+                            "nodeParent":197,
+                            "label":"allCityLoy",
+                            "isDirectory":false,
+                            "isAniNode":false,
+                            "hasChild":false,
+                            "compId":209,
+                            "child":[
+                                ]
+                        }]
+                }]
         }],
     "animations":[
         {

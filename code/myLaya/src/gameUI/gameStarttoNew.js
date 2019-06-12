@@ -4,6 +4,6 @@ export default class gameStarttoNew extends Laya.Script {
         super(); 
     }
     onClick(){
-        Laya.Scene.open("gameStart/gameNew.scene");
+        Laya.Scene.open("gameStart/gameChose.scene");
     }
 }
