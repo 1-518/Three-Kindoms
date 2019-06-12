@@ -1,26 +1,41 @@
-import Citys from "../GameIn/Citys";
-import Persons from "../GameIn/Persons";
-import Factions from "../GameIn/Factions";
-
-
-    export default class gameUiCon extends Laya.Scene {
+   export default class gameUiCon extends Laya.Scene {
         
     constructor() { 
         super(); 
         this.loadScene("gameMain/gameMain");
+        //全局变量
+        this.playerFactionID;
         this.cityNum;
-        this.personNum={};
+        this.personNum=[];
         this.arrCity=[];
-        Laya.loader.load("midCity.json",Laya.Handler.create(this,this.onCityStart),null,Laya.loader.JSON);
         this.arrFaction=[];
-        Laya.loader.load("midFaction.json",Laya.Handler.create(this,this.onFactionStart),null,Laya.loader.JSON);
         this.arrPerson=[];
-        Laya.loader.load("midPerson.json",Laya.Handler.create(this,this.onPersonStart),null,Laya.loader.JSON);
+        this.nowDate=[];    
+    }
+    onOpened(newOrLoad){
+        //新游戏读数据    
+        if(newOrLoad!=0){
+            Laya.loader.load("midCity.json",Laya.Handler.create(this,this.onCityStart),null,Laya.loader.JSON);
+            Laya.loader.load("midFaction.json",Laya.Handler.create(this,this.onFactionStart),null,Laya.loader.JSON);
+            Laya.loader.load("midPerson.json",Laya.Handler.create(this,this.onPersonStart),null,Laya.loader.JSON);
+            this.nowDate=[184,1];
+            this.playerFactionID=newOrLoad;
+        }
+        //读取游戏数据
+        else if(newOrLoad==0){
+            this.arrCity=Laya.LocalStorage.getJSON("midcity");
+            this.arrPerson=Laya.LocalStorage.getJSON("midperson");
+            this.arrFaction=Laya.LocalStorage.getJSON("midfaction");
+            this.nowDate=Laya.LocalStorage.getJSON("time");
+            this.playerFactionID=Laya.LocalStorage.getJSON("fID");
+        }
     }
 
     onCityStart(){
         var json=Laya.loader.getRes("midCity.json");
-        this.arrCity=json["midCity"]; //arry[35]从json读取进来。     
+        this.arrCity=json["midCity"]; //arry[35]从json读取进来。
+        
+        
     }
 
     onFactionStart(){
@@ -34,15 +49,13 @@ import Factions from "../GameIn/Factions";
     }
 
     onEnable() {
-       
-
         this.military.on(Laya.Event.CLICK,this,this.militaryCon);
         this.interior.on(Laya.Event.CLICK,this,this.interiorCon);
         this.tricks.on(Laya.Event.CLICK,this,this.tricksCon);
         this.personnel.on(Laya.Event.CLICK,this,this.personnelCon);
         this.information.on(Laya.Event.CLICK,this,this.infListCon);
-
-        //
+        this.next1.on(Laya.Event.CLICK,this,this.nextRound);
+       
          //arry[35]从json读取进来。
        
         //监听返回值
@@ -172,7 +185,6 @@ import Factions from "../GameIn/Factions";
    }
    //写入城池北海信息
    setBeiHai(){
-           
             this.cityNum=0;
             this.cityName.text=this.arrCity[0].cityName;
             this.moneyData.text=this.arrCity[0].cityMoney;
@@ -183,7 +195,13 @@ import Factions from "../GameIn/Factions";
             this.cityDefData.text=this.arrCity[0].cityDefense;
             this.lovalData.text=this.arrCity[0].cityLoyal;
             this.facName.text=this.arrFaction[this.arrCity[0].cityBelongFactionID-1].FactionName;
-            this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+            this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+            this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+            this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+            this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+            this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+            this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+            this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     //写入琅琊信息
     setLangya(){
@@ -198,7 +216,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[1].cityDefense;
         this.lovalData.text=this.arrCity[1].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[1].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     //写入黄陵信息
     setHuangLing(){
@@ -213,7 +237,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[2].cityDefense;
         this.lovalData.text=this.arrCity[2].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[2].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setWu(){
        
@@ -227,7 +257,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[3].cityDefense;
         this.lovalData.text=this.arrCity[3].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[3].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setKuaiJi(){
        
@@ -241,7 +277,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[4].cityDefense;
         this.lovalData.text=this.arrCity[4].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[4].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setNanPi(){
        
@@ -255,7 +297,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[5].cityDefense;
         this.lovalData.text=this.arrCity[5].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[5].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setPingYuang(){
        
@@ -269,7 +317,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[6].cityDefense;
         this.lovalData.text=this.arrCity[6].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[6].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setJiBei(){
        
@@ -283,7 +337,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[7].cityDefense;
         this.lovalData.text=this.arrCity[7].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[7].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setXiaoPei(){
         
@@ -297,7 +357,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[8].cityDefense;
         this.lovalData.text=this.arrCity[8].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[8].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setXiaPi(){
        
@@ -312,7 +378,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[9].cityDefense;
         this.lovalData.text=this.arrCity[9].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[9].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setJianYe(){
        
@@ -326,7 +398,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[10].cityDefense;
         this.lovalData.text=this.arrCity[10].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[10].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setZhongShan(){
         
@@ -340,7 +418,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[11].cityDefense;
         this.lovalData.text=this.arrCity[11].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[11].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setGanLing(){
        
@@ -354,7 +438,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[12].cityDefense;
         this.lovalData.text=this.arrCity[12].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[12].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setShouChun(){
         
@@ -368,7 +458,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[13].cityDefense;
         this.lovalData.text=this.arrCity[13].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[13].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setLuJiang(){
        
@@ -382,7 +478,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[14].cityDefense;
         this.lovalData.text=this.arrCity[14].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[14].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setJuLu(){
        
@@ -396,7 +498,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[15].cityDefense;
         this.lovalData.text=this.arrCity[15].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[15].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setYe(){
         
@@ -410,7 +518,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[16].cityDefense;
         this.lovalData.text=this.arrCity[16].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[16].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setPuYang(){
        
@@ -424,7 +538,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[17].cityDefense;
         this.lovalData.text=this.arrCity[17].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[17].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setJiao(){
         
@@ -438,7 +558,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[18].cityDefense;
         this.lovalData.text=this.arrCity[18].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[18].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setChenLiu(){
        
@@ -452,7 +578,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[19].cityDefense;
         this.lovalData.text=this.arrCity[19].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[19].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setJinYan(){
        
@@ -466,7 +598,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[20].cityDefense;
         this.lovalData.text=this.arrCity[20].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[20].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setShangTan(){
       
@@ -480,7 +618,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[21].cityDefense;
         this.lovalData.text=this.arrCity[21].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[21].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setHeNei(){
         
@@ -494,7 +638,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[22].cityDefense;
         this.lovalData.text=this.arrCity[22].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[22].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setXuChan(){
        
@@ -508,7 +658,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[23].cityDefense;
         this.lovalData.text=this.arrCity[23].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[23].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setRuNan(){
        
@@ -522,7 +678,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[24].cityDefense;
         this.lovalData.text=this.arrCity[24].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[24].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setJiangXia(){
        
@@ -536,7 +698,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[25].cityDefense;
         this.lovalData.text=this.arrCity[25].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[25].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setLuoYan(){
        
@@ -550,7 +718,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[26].cityDefense;
         this.lovalData.text=this.arrCity[26].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[26].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setWan(){
        
@@ -564,7 +738,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[27].cityDefense;
         this.lovalData.text=this.arrCity[27].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[27].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setXinYe(){
        
@@ -578,7 +758,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[28].cityDefense;
         this.lovalData.text=this.arrCity[28].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[28].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setHongNong(){
        
@@ -592,7 +778,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[29].cityDefense;
         this.lovalData.text=this.arrCity[29].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[29].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setXianYan(){
        
@@ -606,7 +798,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[30].cityDefense;
         this.lovalData.text=this.arrCity[30].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[30].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setJiangLing(){
        
@@ -620,8 +818,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[31].cityDefense;
         this.lovalData.text=this.arrCity[31].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[31].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
-        
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setChangAn(){
        
@@ -635,7 +838,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[32].cityDefense;
         this.lovalData.text=this.arrCity[32].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[32].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setShangYong(){
        
@@ -649,7 +858,13 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[33].cityDefense;
         this.lovalData.text=this.arrCity[33].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[33].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
     }
     setYongAn(){
        
@@ -663,7 +878,14 @@ import Factions from "../GameIn/Factions";
         this.cityDefData.text=this.arrCity[34].cityDefense;
         this.lovalData.text=this.arrCity[34].cityLoyal;
         this.facName.text=this.arrFaction[this.arrCity[34].cityBelongFactionID-1].FactionName;
-        this.farmDeve.on(Laya.Event.CLICK,this,this.personOpen);
+        this.farmDeve.on(Laya.Event.CLICK,this,this.farPersonOpen);
+        this.busnessDeve.on(Laya.Event.CLICK,this,this.busPersonOpen);
+        this.hayBusiness.on(Laya.Event.CLICK,this,this.hayPersonOpen);
+        this.impLoval.on(Laya.Event.CLICK,this,this.lovPersonOpen);
+        this.defenceAdd.on(Laya.Event.CLICK,this,this.defPersonOpen);
+        this.praise.on(Laya.Event.CLICK,this,this.praPersonOpen);
+        this.agent.on(Laya.Event.CLICK,this,this.agePersonOpen);
+        
     }
     //第一次点击城市隐藏以打开的下方菜单，打开顶部信息
     menuCon(){
@@ -683,15 +905,14 @@ import Factions from "../GameIn/Factions";
             this.topData.visible=false;
             this.perList.visible=false;
     }
-    //农田开发
-    personOpen(){
+    farPersonOpen(){
         this.interiorMenu.visible=false;
         this.perList.visible=true;
         let perCount=0;
         let citPerson=[];
         let personData=[];
         for(let j=0;j<220;j++){
-                if(this.arrPerson[j].personCityID==this.arrCity[this.cityNum].cityID){
+                if(this.arrPerson[j].personCityID==this.arrCity[this.cityNum].cityID&&this.arrPerson[j].personState==1){
                     citPerson[perCount]=this.arrPerson[j];
                     perCount++;
                 }   
@@ -710,22 +931,390 @@ import Factions from "../GameIn/Factions";
         }
         
         this.perList.dataSource=personData;
+        //索引找到选择武将
+        //引用farmAdd()
+        this.perList.mouseHandler=new Laya.Handler(this,this.farmAdd);
+       
+        
         
     }
-    farmAdd(){
+         //农田开发
+    farmAdd(e,index){
+        let citPerson=[];
+        let perCount=0;
+        for(let j=0;j<220;j++){
+            if(this.arrPerson[j].personCityID==this.arrCity[this.cityNum].cityID&&this.arrPerson[j].personState==1){
+                citPerson[perCount]=this.arrPerson[j];
+                perCount++; 
+            }   
+        }
+        let perData=citPerson[index];
         let data = Number(this.arrCity[this.cityNum].cityFarm);
-        data+=5;
+        if(e.type==Laya.Event.CLICK){
+            if((e.target)instanceof Laya.Button){
+                data+=Number(perData.personPolitics);
+                perData.personState=0;        
+            }
+        }
+            
         this.farmData.text=data;
         this.arrCity[this.cityNum].cityFarm=data;
+        this.farPersonOpen();
+    
     }
-    //商业开发
-    bussinessAdd(){}
-    //粮草买卖
-    foodChange(){}
-    //提高民忠
-    lovalAdd(){}
-    //离间武将
+    busPersonOpen(){
+        this.interiorMenu.visible=false;
+        this.perList.visible=true;
+        let perCount=0;
+        let citPerson=[];
+        let personData=[];
+        for(let j=0;j<220;j++){
+                if(this.arrPerson[j].personCityID==this.arrCity[this.cityNum].cityID&&this.arrPerson[j].personState==1){
+                    citPerson[perCount]=this.arrPerson[j];
+                    perCount++;
+                }   
+        }
+        for(let i=0;i<perCount;i++){
+            let data=null;
+            data={
+                personName:{text:citPerson[i].personName},
+                personCommand:{text:"统帅:"+citPerson[i].personCommand},
+                personMilitary:{text:"武力:"+citPerson[i].personMilitary},
+                personPolitics:{text:"政治:"+citPerson[i].personPolitics},
+                personTrick:{text:"计策:"+citPerson[i].personTrick},
+                personLoyal:{text:"忠诚:"+citPerson[i].personLoyal}
+            }
+            personData.push(data);
+        }
+        
+        this.perList.dataSource=personData;
+        this.perList.mouseHandler=new Laya.Handler(this,this.bussinessAdd);
+    }
 
+      //商业开发
+    bussinessAdd(e,index){
+         let citPerson=[];
+         let perCount=0;
+         for(let j=0;j<220;j++){
+             if(this.arrPerson[j].personCityID==this.arrCity[this.cityNum].cityID&&this.arrPerson[j].personState==1){
+                citPerson[perCount]=this.arrPerson[j];
+                 perCount++;
+                
+             }   
+     }
+         let perData=citPerson[index];
+         let data = Number(this.arrCity[this.cityNum].cityBussiness);
+         let money=Number(this.arrCity[this.cityNum].cityMoney);
+         if(e.type==Laya.Event.CLICK){
+             if((e.target)instanceof Laya.Button){
+                 data+=Number(perData.personPolitics+perData.personTrick);  //商业改变
+                 money=100-Number(perData.personPolitics*perData.personTrick);  //金钱改变
+                 perData.personState=0;   //状态改变
+             }
+         }
+        this.bunessData.text=data;
+        this.arrCity[this.cityNum].cityBussiness=data;
+        
+        this.moneyData.text=money;
+        this.arrCity[this.cityNum].cityMoney=money;
+        this.busPersonOpen();
+    }
+
+    hayPersonOpen(){
+        this.interiorMenu.visible=false;
+        this.perList.visible=true;
+        let perCount=0;
+        let citPerson=[];
+        let personData=[];
+        for(let j=0;j<220;j++){
+                if(this.arrPerson[j].personCityID==this.arrCity[this.cityNum].cityID&&this.arrPerson[j].personState==1){
+                    citPerson[perCount]=this.arrPerson[j];
+                    perCount++;
+                }   
+        }
+        for(let i=0;i<perCount;i++){
+            let data=null;
+            data={
+                personName:{text:citPerson[i].personName},
+                personCommand:{text:"统帅:"+citPerson[i].personCommand},
+                personMilitary:{text:"武力:"+citPerson[i].personMilitary},
+                personPolitics:{text:"政治:"+citPerson[i].personPolitics},
+                personTrick:{text:"计策:"+citPerson[i].personTrick},
+                personLoyal:{text:"忠诚:"+citPerson[i].personLoyal}
+            }
+            personData.push(data);
+        }
+        
+        this.perList.dataSource=personData;
+        this.perList.mouseHandler=new Laya.Handler(this,this.foodChange);
+    }
+      //粮草买卖
+    foodChange(e,index){
+        let citPerson=[];
+        let perCount=0;
+        for(let j=0;j<220;j++){
+            if(this.arrPerson[j].personCityID==this.arrCity[this.cityNum].cityID&&this.arrPerson[j].personState==1){
+                citPerson[perCount]=this.arrPerson[j];
+                perCount++;
+                
+            }   
+    }
+        let perData=citPerson[index];
+        let data = Number(this.arrCity[this.cityNum].cityFood);
+        if(e.type==Laya.Event.CLICK){
+           if((e.target)instanceof Laya.Button){
+            data+=Number(this.arrCity[this.cityNum].cityFarm);
+            perData.personState=0;
+        }
+    }
+        this.hayData.text=data;
+        this.arrCity[this.cityNum].cityFood=data;
+        this.hayPersonOpen();
+    }
+ 
+    lovPersonOpen(){
+        this.interiorMenu.visible=false;
+        this.perList.visible=true;
+        let perCount=0;
+        let citPerson=[];
+        let personData=[];
+        for(let j=0;j<220;j++){
+                if(this.arrPerson[j].personCityID==this.arrCity[this.cityNum].cityID&&this.arrPerson[j].personState==1){
+                    citPerson[perCount]=this.arrPerson[j];
+                    perCount++;
+                }   
+        }
+        for(let i=0;i<perCount;i++){
+            let data=null;
+            data={
+                personName:{text:citPerson[i].personName},
+                personCommand:{text:"统帅:"+citPerson[i].personCommand},
+                personMilitary:{text:"武力:"+citPerson[i].personMilitary},
+                personPolitics:{text:"政治:"+citPerson[i].personPolitics},
+                personTrick:{text:"计策:"+citPerson[i].personTrick},
+                personLoyal:{text:"忠诚:"+citPerson[i].personLoyal}
+            }
+            personData.push(data);
+        }
+        
+        this.perList.dataSource=personData;
+        this.perList.mouseHandler=new Laya.Handler(this,this.lovalAdd);
+    }
+    //提高民忠
+    lovalAdd(e,index){
+        let citPerson=[];
+        let perCount=0;
+        for(let j=0;j<220;j++){
+            if(this.arrPerson[j].personCityID==this.arrCity[this.cityNum].cityID&&this.arrPerson[j].personState==1){
+                citPerson[perCount]=this.arrPerson[j];
+                perCount++;
+                
+            }   
+    }
+        let perData=citPerson[index];
+        let data = Number(this.arrCity[this.cityNum].cityFood);
+        let money = Number(this.arrCity[this.cityNum].cityMoney);
+        let lov=Number(this.arrCity[this.cityNum].cityLoyal);
+        if(e.type==Laya.Event.CLICK){
+           if((e.target)instanceof Laya.Button){
+                data+=100-Number(perData.personCommand+perData.personMilitary);  //粮草改变
+                money=100-Number(perData.personPolitics*perData.personTrick);  //金钱改变
+                lov+=5;  //民忠改变
+                perData.personState=0;
+             
+            }
+        }
+        this.hayData.text=data;
+        this.arrCity[this.cityNum].cityFood=data;
+        this.moneyData.text=money;
+        this.arrCity[this.cityNum].cityMoney=money;
+        this.lovalData.text=lov;
+        this.arrCity[this.cityNum].cityLoyal=lov;
+        this.lovPersonOpen();
+     }
+ 
+    defPersonOpen(){
+        this.interiorMenu.visible=false;
+        this.perList.visible=true;
+        let perCount=0;
+        let citPerson=[];
+        let personData=[];
+        for(let j=0;j<220;j++){
+                if(this.arrPerson[j].personCityID==this.arrCity[this.cityNum].cityID&&this.arrPerson[j].personState==1){
+                    citPerson[perCount]=this.arrPerson[j];
+                    perCount++;
+                }   
+        }
+        for(let i=0;i<perCount;i++){
+            let data=null;
+            data={
+                personName:{text:citPerson[i].personName},
+                personCommand:{text:"统帅:"+citPerson[i].personCommand},
+                personMilitary:{text:"武力:"+citPerson[i].personMilitary},
+                personPolitics:{text:"政治:"+citPerson[i].personPolitics},
+                personTrick:{text:"计策:"+citPerson[i].personTrick},
+                personLoyal:{text:"忠诚:"+citPerson[i].personLoyal}
+            }
+            personData.push(data);
+        }
+        
+        this.perList.dataSource=personData;
+        this.perList.mouseHandler=new Laya.Handler(this,this.defenseAdd);
+    }
+
+    //提高城防
+    defenseAdd(e,index){
+        let citPerson=[];
+        let perCount=0;
+        for(let j=0;j<220;j++){
+            if(this.arrPerson[j].personCityID==this.arrCity[this.cityNum].cityID&&this.arrPerson[j].personState==1){
+                citPerson[perCount]=this.arrPerson[j];
+                perCount++;
+                
+            }   
+    }
+        let perData=citPerson[index];
+        let data = Number(this.arrCity[this.cityNum].cityDefense);
+        let money=Number(this.arrCity[this.cityNum].cityMoney);
+        if(e.type==Laya.Event.CLICK){
+            if((e.target)instanceof Laya.Button){
+                data+=this.arrCity[this.cityNum].citySoldier/10;//城防改变
+                money=this.arrCity[this.cityNum].cityMoney-10;//金钱改变
+                perData.personState=0;
+            }
+        }
+        
+        this.moneyData.text=money;
+        this.arrCity[this.cityNum].cityMoney=money;
+        this.cityDefData.text=data;
+        this.arrCity[this.cityNum].cityDefense=data;
+        this.defPersonOpen();
+     }
+     praPersonOpen(){
+        this.interiorMenu.visible=false;
+        this.perList.visible=true;
+        let perCount=0;
+        let citPerson=[];
+        let personData=[];
+        for(let j=0;j<220;j++){
+                if(this.arrPerson[j].personCityID==this.arrCity[this.cityNum].cityID&&this.arrPerson[j].personState==1){
+                    citPerson[perCount]=this.arrPerson[j];
+                    perCount++;
+                }   
+        }
+        for(let i=0;i<perCount;i++){
+            let data=null;
+            data={
+                personName:{text:citPerson[i].personName},
+                personCommand:{text:"统帅:"+citPerson[i].personCommand},
+                personMilitary:{text:"武力:"+citPerson[i].personMilitary},
+                personPolitics:{text:"政治:"+citPerson[i].personPolitics},
+                personTrick:{text:"计策:"+citPerson[i].personTrick},
+                personLoyal:{text:"忠诚:"+citPerson[i].personLoyal}
+            }
+            personData.push(data);
+        }
+        
+        this.perList.dataSource=personData;
+        this.perList.mouseHandler=new Laya.Handler(this,this.praisel);  
+     }
+    //褒奖
+    praisel(e,index){
+        let citPerson=[];
+        let perCount=0;
+        for(let j=0;j<220;j++){
+            if(this.arrPerson[j].personCityID==this.arrCity[this.cityNum].cityID&&this.arrPerson[j].personState==1){
+                citPerson[perCount]=this.arrPerson[j];
+                perCount++;
+                
+            }   
+    }
+        let perData=citPerson[index];
+        let money = Number(this.arrCity[this.cityNum].cityMoney);
+        if(e.type==Laya.Event.CLICK){
+            if((e.target)instanceof Laya.Button){
+                money=this.arrCity[this.cityNum].cityMoney-10;//金钱改变
+                perData.personLoyal++;
+                perData.personState=0;
+
+            }
+        }
+         this.moneyData.text=money;
+         this.arrCity[this.cityNum].cityMoney=money;
+         this.praPersonOpen();
+     }
+ 
+     agePersonOpen(){
+        this.interiorMenu.visible=false;
+        this.perList.visible=true;
+        let perCount=0;
+        let citPerson=[];
+        let personData=[];
+        for(let j=0;j<220;j++){
+                if(this.arrPerson[j].personCityID==this.arrCity[this.cityNum].cityID&&this.arrPerson[j].personState==-1){
+                    citPerson[perCount]=this.arrPerson[j];
+                    perCount++;
+                }   
+        }
+        for(let i=0;i<perCount;i++){
+            let data=null;
+            data={
+                personName:{text:citPerson[i].personName},
+                personCommand:{text:"统帅:"+citPerson[i].personCommand},
+                personMilitary:{text:"武力:"+citPerson[i].personMilitary},
+                personPolitics:{text:"政治:"+citPerson[i].personPolitics},
+                personTrick:{text:"计策:"+citPerson[i].personTrick},
+                personLoyal:{text:"忠诚:"+citPerson[i].personLoyal}
+            }
+            personData.push(data);
+        }
+        
+        this.perList.dataSource=personData;
+        this.perList.mouseHandler=new Laya.Handler(this,this.DengYong);
+     }
+
+    //登庸
+    DengYong(e,index){
+        let citPerson=[];
+        let perCount=0;
+        for(let j=0;j<220;j++){
+            if(this.arrPerson[j].personCityID==this.arrCity[this.cityNum].cityID&&this.arrPerson[j].personState==-1){
+                citPerson[perCount]=this.arrPerson[j];
+                perCount++;
+                
+            }   
+    }
+        let perData=citPerson[index];
+        let money = Number(this.arrCity[this.cityNum].cityMoney);
+        if(e.type==Laya.Event.CLICK){
+            if((e.target)instanceof Laya.Button){
+                console.log(perData); 
+                if(perData.personState==-1){
+                money=this.arrCity[this.cityNum].cityMoney-10;//金钱改变
+                perData.personState=0;
+                 }
+        }
+    }
+             this.moneyData.text=money;
+             this.arrCity[this.cityNum].cityMoney=money;
+             this.agePersonOpen();
+}
+     
+ 
+    //移动
+    move(){
+ 
+    }
+     
+    //流放
+    banish(){
+     
+    }
+ 
+    //出征
+    //输送
+    //征兵
+    //离间武将
     //蛊惑民众
     lovalDec(){}
     //减低城防
@@ -734,4 +1323,42 @@ import Factions from "../GameIn/Factions";
     bussinessDec(){}
     //减低农业
     farmDec(){}
+    nextRound(){
+        //时间信息变化
+        this.nowDate[1]++;
+        if(this.nowDate[1]==5){
+            this.nowDate[1]=1;
+            this.nowDate[0]++;
+        }
+        //城池信息变化
+        let i=0;
+        let t;
+        while(i<35){
+            t=Number(this.arrCity[i].cityFood);
+            t+=Number(this.arrCity[i].cityFarm);
+            this.arrCity[i].cityFood=t;
+            //粮草+=农业
+            t=Number( this.arrCity[i].cityMoney)
+            t+=Number(this.arrCity[i].cityBussiness);
+            this.arrCity[i].cityMoney=t;
+           //金钱+=商业
+            i++;
+        }
+        //武将状态变化
+        i=0;
+        while(i<220){
+            if(this.arrPerson[i].personState==0) this.arrPerson[i].personState=1//状态为0的武将变为1
+            i++;
+        }
+        //保存数据
+        Laya.LocalStorage.setJSON("midcity",this.arrCity);
+        Laya.LocalStorage.setJSON("midperson",this.arrPerson);
+        Laya.LocalStorage.setJSON("midfaction",this.arrFaction);
+        Laya.LocalStorage.setJSON("time",this.nowDate);
+        Laya.LocalStorage.setJSON("fID",this.playerFactionID);
+        //刷新数据
+        this.topData.visible=false;
+        
+    }
+
 }

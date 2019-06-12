@@ -4,6 +4,7 @@ export default class gameChosetoMain extends Laya.Script {
         super(); 
     }
     onClick(){
-        Laya.Scene.open("gameMain/gameMain.scene");
+        var newOrLoad=1;
+        Laya.Scene.open("gameMain/gameMain.scene",true,newOrLoad);
     }
 }
