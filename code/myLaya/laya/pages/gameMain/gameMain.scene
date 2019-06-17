@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"Scene",
-    "selectedBox":2,
-    "selecteID":19,
+    "selectedBox":222,
+    "selecteID":219,
     "searchKey":"Scene",
     "props":{"width":1136,"sceneColor":"#000000","runtime":"gameUI/gameUiCon.js","height":640},
     "nodeParent":-1,
-    "maxID":211,
+    "maxID":234,
     "label":"Scene",
     "isOpen":true,
     "isDirectory":true,
@@ -18,17 +18,16 @@
             "x":15,
             "type":"Panel",
             "searchKey":"Panel",
-            "props":{"y":0,"x":-10,"width":1347,"vScrollBarSkin":"comp/vscroll.png","height":847,"hScrollBarSkin":"comp/vscroll.png","elasticEnabled":true},
+            "props":{"y":0,"x":-9,"width":1559,"vScrollBarSkin":"comp/vscroll.png","height":847,"hScrollBarSkin":"comp/vscroll.png","elasticEnabled":true},
             "nodeParent":2,
             "label":"Panel",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":98,
             "child":[
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite,map",
                     "props":{"y":-84,"x":-203,"width":2845,"var":"map","texture":"three/微信图片_20190603234528.jpg","mouseThrough":true,"height":1543},
@@ -43,7 +42,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Box",
                     "searchKey":"Box,city",
                     "props":{"y":-95,"x":-205,"width":2850,"var":"city","height":1562},
@@ -765,7 +763,7 @@
             "x":15,
             "type":"Button",
             "searchKey":"Button,information",
-            "props":{"y":54,"x":966,"width":131,"var":"information","skin":"comp/button.png","label":"详细信息","height":75},
+            "props":{"y":54,"x":966,"width":131,"var":"information","skin":"three/创建.png","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":25,"labelFont":"Microsoft YaHei","labelBold":true,"labelAlign":"center","label":"详细信息","height":75},
             "nodeParent":2,
             "label":"information",
             "isDirectory":false,
@@ -774,7 +772,7 @@
             "compId":46,
             "child":[
                 ],
-            "$HIDDEN":true
+            "$HIDDEN":false
         },
         {
             "x":15,
@@ -783,17 +781,16 @@
             "props":{"y":511,"x":90,"visible":true,"var":"downData"},
             "nodeParent":2,
             "label":"downData",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":96,
             "child":[
                 {
-                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,military",
-                    "props":{"y":13,"x":55,"width":110,"var":"military","skin":"comp/button.png","pivotX":55,"labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":30,"labelFont":"Helvetica","labelBold":true,"labelAlign":"center","label":"军事","height":47},
+                    "props":{"y":13,"x":55,"width":110,"var":"military","stateNum":"3","skin":"three/创建.png","pivotX":55,"labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":30,"labelFont":"Helvetica","labelBold":true,"labelAlign":"center","label":"军事","height":47},
                     "nodeParent":96,
                     "label":"military",
                     "isDirectory":false,
@@ -805,10 +802,9 @@
                     "$HIDDEN":false
                 },
                 {
-                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,interior",
-                    "props":{"y":13,"x":255,"width":110,"var":"interior","skin":"comp/button.png","pivotX":55,"label":"内政","height":47},
+                    "props":{"y":13,"x":255,"width":110,"var":"interior","skin":"three/创建.png","pivotX":55,"labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":30,"labelBold":true,"labelAlign":"center","label":"内政","height":47},
                     "nodeParent":96,
                     "label":"interior",
                     "isOpen":true,
@@ -817,13 +813,13 @@
                     "hasChild":false,
                     "compId":16,
                     "child":[
-                        ]
+                        ],
+                    "$HIDDEN":false
                 },
                 {
-                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,tricks",
-                    "props":{"y":13,"x":455,"width":110,"var":"tricks","skin":"comp/button.png","pivotX":55,"label":"计策","height":47},
+                    "props":{"y":13,"x":455,"width":110,"var":"tricks","skin":"three/创建.png","pivotX":55,"labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":30,"labelBold":true,"labelAlign":"center","label":"计策","height":47},
                     "nodeParent":96,
                     "label":"tricks",
                     "isDirectory":false,
@@ -834,10 +830,9 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,personnel",
-                    "props":{"y":13,"x":655,"width":110,"var":"personnel","skin":"comp/button.png","pivotX":64,"label":"人事","height":47},
+                    "props":{"y":13,"x":655,"width":110,"var":"personnel","skin":"three/创建.png","pivotX":64,"labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":30,"labelBold":true,"labelAlign":"center","label":"人事","height":47},
                     "nodeParent":96,
                     "label":"personnel",
                     "isDirectory":false,
@@ -848,13 +843,12 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Box",
                     "searchKey":"Box,menu",
                     "props":{"y":-75,"x":176,"var":"menu"},
                     "nodeParent":96,
                     "label":"menu",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
@@ -875,7 +869,7 @@
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,war",
-                                    "props":{"y":0,"x":0,"width":110,"var":"war","skin":"comp/button.png","label":"出征"},
+                                    "props":{"y":0,"x":0,"width":110,"var":"war","skin":"three/创建.png","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":25,"labelBold":true,"labelAlign":"center","label":"出征"},
                                     "nodeParent":10,
                                     "label":"war",
                                     "isOpen":true,
@@ -889,7 +883,7 @@
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,delivery",
-                                    "props":{"y":0,"x":150,"width":110,"var":"delivery","skin":"comp/button.png","label":"输送"},
+                                    "props":{"y":0,"x":150,"width":110,"var":"delivery","skin":"three/创建.png","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":25,"labelBold":true,"labelAlign":"center","label":"输送"},
                                     "nodeParent":10,
                                     "label":"delivery",
                                     "isOpen":true,
@@ -903,7 +897,7 @@
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,theDraft",
-                                    "props":{"y":0,"x":300,"width":110,"var":"theDraft","skin":"comp/button.png","label":"征兵"},
+                                    "props":{"y":0,"x":300,"width":110,"var":"theDraft","skin":"three/创建.png","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":25,"labelBold":true,"labelAlign":"center","label":"征兵"},
                                     "nodeParent":10,
                                     "label":"theDraft",
                                     "isDirectory":false,
@@ -930,7 +924,7 @@
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,farmDeve",
-                                    "props":{"y":0,"x":0,"width":110,"var":"farmDeve","skin":"comp/button.png","label":"开发农田","height":47},
+                                    "props":{"y":0,"x":0,"width":110,"var":"farmDeve","skin":"three/创建.png","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":23,"labelBold":true,"labelAlign":"center","label":"开发农田","height":47},
                                     "nodeParent":25,
                                     "label":"farmDeve",
                                     "isOpen":true,
@@ -944,7 +938,7 @@
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,busnessDeve",
-                                    "props":{"y":0,"x":150,"width":110,"var":"busnessDeve","skin":"comp/button.png","label":"开发商业","height":47},
+                                    "props":{"y":0,"x":150,"width":110,"var":"busnessDeve","skin":"three/创建.png","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":23,"labelBold":true,"labelAlign":"center","label":"开发商业","height":47},
                                     "nodeParent":25,
                                     "label":"busnessDeve",
                                     "isDirectory":false,
@@ -958,7 +952,7 @@
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,hayBusiness",
-                                    "props":{"y":0,"x":300,"width":110,"var":"hayBusiness","skin":"comp/button.png","label":"粮草买卖","height":47},
+                                    "props":{"y":0,"x":300,"width":110,"var":"hayBusiness","skin":"three/创建.png","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":23,"labelBold":true,"labelAlign":"center","label":"粮草买卖","height":47},
                                     "nodeParent":25,
                                     "label":"hayBusiness",
                                     "isDirectory":false,
@@ -971,7 +965,7 @@
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,impLoval",
-                                    "props":{"y":0,"x":450,"width":110,"var":"impLoval","skin":"comp/button.png","label":"提高民忠","height":47},
+                                    "props":{"y":0,"x":450,"width":110,"var":"impLoval","skin":"three/创建.png","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":23,"labelBold":true,"labelAlign":"center","label":"提高民忠","height":47},
                                     "nodeParent":25,
                                     "label":"impLoval",
                                     "isOpen":true,
@@ -986,7 +980,7 @@
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,defenceAdd",
-                                    "props":{"y":0,"x":606,"width":110,"var":"defenceAdd","skin":"comp/button.png","label":"提高城防","height":47},
+                                    "props":{"y":0,"x":606,"width":110,"var":"defenceAdd","skin":"three/创建.png","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":23,"labelBold":true,"labelAlign":"center","label":"提高城防","height":47},
                                     "nodeParent":25,
                                     "label":"defenceAdd",
                                     "isOpen":true,
@@ -1006,7 +1000,7 @@
                             "props":{"x":-160,"visible":false,"var":"tricksMenu"},
                             "nodeParent":97,
                             "label":"tricksMenu",
-                            "isOpen":false,
+                            "isOpen":true,
                             "isDirectory":true,
                             "isAniNode":true,
                             "hasChild":true,
@@ -1015,7 +1009,7 @@
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,alienation",
-                                    "props":{"y":0,"x":0,"width":110,"var":"alienation","skin":"comp/button.png","label":"离间武将"},
+                                    "props":{"y":0,"x":0,"width":110,"var":"alienation","skin":"three/创建.png","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":23,"label":"离间武将"},
                                     "nodeParent":32,
                                     "label":"alienation",
                                     "isDirectory":false,
@@ -1028,7 +1022,7 @@
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,bewitchPeo",
-                                    "props":{"y":0,"x":150,"width":110,"var":"bewitchPeo","skin":"comp/button.png","label":"蛊惑民众"},
+                                    "props":{"y":0,"x":150,"width":110,"var":"bewitchPeo","skin":"three/创建.png","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":23,"labelBold":true,"labelAlign":"center","label":"蛊惑民众"},
                                     "nodeParent":32,
                                     "label":"bewitchPeo",
                                     "isDirectory":false,
@@ -1041,7 +1035,7 @@
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,reduceDefen",
-                                    "props":{"y":0,"x":300,"width":110,"var":"reduceDefen","skin":"comp/button.png","label":"降低城防"},
+                                    "props":{"y":0,"x":300,"width":110,"var":"reduceDefen","skin":"three/创建.png","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":23,"labelBold":true,"labelAlign":"center","label":"降低城防"},
                                     "nodeParent":32,
                                     "label":"reduceDefen",
                                     "isDirectory":false,
@@ -1054,7 +1048,7 @@
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,reduceBus",
-                                    "props":{"x":450,"width":110,"var":"reduceBus","skin":"comp/button.png","label":"降低商业"},
+                                    "props":{"x":450,"width":110,"var":"reduceBus","skin":"three/创建.png","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":23,"labelBold":true,"labelAlign":"center","label":"降低商业"},
                                     "nodeParent":32,
                                     "label":"reduceBus",
                                     "isDirectory":false,
@@ -1067,7 +1061,7 @@
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,reduceFarm",
-                                    "props":{"x":600,"width":110,"var":"reduceFarm","skin":"comp/button.png","label":"降低农业"},
+                                    "props":{"x":600,"width":110,"var":"reduceFarm","skin":"three/创建.png","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":23,"labelBold":true,"labelAlign":"center","label":"降低农业"},
                                     "nodeParent":32,
                                     "label":"reduceFarm",
                                     "isDirectory":false,
@@ -1094,7 +1088,7 @@
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,praise",
-                                    "props":{"y":0,"x":150,"width":110,"var":"praise","skin":"comp/button.png","label":"褒奖"},
+                                    "props":{"y":0,"x":150,"width":110,"var":"praise","skin":"three/创建.png","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":23,"labelBold":true,"labelAlign":"center","label":"褒奖"},
                                     "nodeParent":39,
                                     "label":"praise",
                                     "isDirectory":false,
@@ -1107,7 +1101,7 @@
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,move",
-                                    "props":{"y":0,"x":300,"width":110,"var":"move","skin":"comp/button.png","label":"移动"},
+                                    "props":{"y":0,"x":300,"width":110,"var":"move","skin":"three/创建.png","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":23,"labelBold":true,"labelAlign":"center","label":"移动"},
                                     "nodeParent":39,
                                     "label":"move",
                                     "isDirectory":false,
@@ -1115,12 +1109,13 @@
                                     "hasChild":false,
                                     "compId":33,
                                     "child":[
-                                        ]
+                                        ],
+                                    "$HIDDEN":false
                                 },
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,exile",
-                                    "props":{"x":450,"width":110,"var":"exile","skin":"comp/button.png","label":"流放"},
+                                    "props":{"x":450,"width":110,"var":"exile","skin":"three/创建.png","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":23,"labelBold":true,"labelAlign":"center","label":"流放"},
                                     "nodeParent":39,
                                     "label":"exile",
                                     "isDirectory":false,
@@ -1133,7 +1128,7 @@
                                 {
                                     "type":"Button",
                                     "searchKey":"Button,agent",
-                                    "props":{"x":600,"width":110,"var":"agent","skin":"comp/button.png","label":"登庸"},
+                                    "props":{"x":600,"width":110,"var":"agent","skin":"three/创建.png","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":23,"labelBold":true,"labelAlign":"center","label":"登庸"},
                                     "nodeParent":39,
                                     "label":"agent",
                                     "isDirectory":false,
@@ -1143,15 +1138,15 @@
                                     "child":[
                                         ]
                                 }],
-                            "$HIDDEN":false
+                            "$HIDDEN":true
                         }],
+                    "$LOCKED":true,
                     "$HIDDEN":false
                 },
                 {
-                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,next1",
-                    "props":{"y":0,"x":862,"width":200,"var":"next1","skin":"comp/button.png","pivotX":88,"label":"下一回合","height":73},
+                    "props":{"y":0,"x":862,"width":200,"var":"next1","skin":"three/创建.png","pivotX":88,"labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":30,"labelBold":true,"labelAlign":"center","label":"下一回合","height":73},
                     "nodeParent":96,
                     "label":"next1",
                     "isDirectory":false,
@@ -1161,7 +1156,7 @@
                     "child":[
                         ]
                 }],
-            "$HIDDEN":true
+            "$HIDDEN":false
         },
         {
             "x":15,
@@ -1170,14 +1165,13 @@
             "props":{"y":201,"x":70,"width":1028,"visible":false,"var":"infList","vScrollBarSkin":"comp/vscroll.png","spaceY":15,"repeatY":6,"repeatX":1,"height":259,"gray":false,"disabled":false},
             "nodeParent":2,
             "label":"infList",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":60,
             "child":[
                 {
-                    "x":30,
                     "type":"Box",
                     "searchKey":"Box",
                     "props":{"y":14,"x":96,"width":816,"visible":true,"renderType":"render","height":75,"alpha":1},
@@ -1422,7 +1416,7 @@
                         {
                             "type":"Button",
                             "searchKey":"Button,personCho,personCho",
-                            "props":{"y":15,"x":14,"width":76,"var":"personCho","skin":"comp/button.png","name":"personCho","label":"选择","height":69},
+                            "props":{"y":15,"x":14,"width":76,"var":"personCho","skin":"three/创建.png","name":"personCho","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":23,"labelBold":true,"labelAlign":"center","label":"选择","height":69},
                             "nodeParent":165,
                             "label":"personCho",
                             "isDirectory":false,
@@ -1508,7 +1502,7 @@
             "x":15,
             "type":"List",
             "searchKey":"List,otherCityList",
-            "props":{"y":256,"x":146,"width":995,"visible":false,"var":"otherCityList","vScrollBarSkin":"comp/vscroll.png","spaceY":20,"repeatY":6,"repeatX":1,"height":404},
+            "props":{"y":192,"x":109,"width":1120,"visible":false,"var":"otherCityList","vScrollBarSkin":"comp/vscroll.png","spaceY":50,"repeatY":3,"repeatX":1,"mouseEnabled":true,"height":346},
             "nodeParent":2,
             "label":"otherCityList",
             "isOpen":false,
@@ -1523,7 +1517,7 @@
                     "props":{"width":951,"visible":true,"renderType":"render","height":75,"alpha":1},
                     "nodeParent":210,
                     "label":"Box",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":false,
                     "hasChild":true,
@@ -1689,7 +1683,91 @@
                             "compId":209,
                             "child":[
                                 ]
+                        },
+                        {
+                            "type":"Button",
+                            "searchKey":"Button,cityWarCho",
+                            "props":{"y":10,"x":974,"width":102,"var":"cityWarCho","skin":"three/创建.png","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":23,"labelBold":true,"labelAlign":"center","label":"选择","height":52},
+                            "nodeParent":197,
+                            "label":"cityWarCho",
+                            "isDirectory":false,
+                            "isAniNode":false,
+                            "hasChild":false,
+                            "compId":211,
+                            "child":[
+                                ]
                         }]
+                }],
+            "$HIDDEN":true
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "searchKey":"Box,send",
+            "props":{"y":161.5,"x":355,"width":213,"visible":false,"var":"send","height":338},
+            "nodeParent":2,
+            "label":"send",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":222,
+            "child":[
+                {
+                    "x":30,
+                    "type":"TextInput",
+                    "searchKey":"TextInput,sendFood",
+                    "props":{"y":0,"x":1,"width":210,"var":"sendFood","valign":"middle","type":"number","skin":"three/框架.png","promptColor":"#ffffff","prompt":"输送粮草数量","height":65,"fontSize":20,"color":"#ffffff","align":"center"},
+                    "nodeParent":222,
+                    "label":"sendFood",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":217,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"TextInput",
+                    "searchKey":"TextInput,sendMon",
+                    "props":{"y":91,"x":1,"width":210,"var":"sendMon","valign":"middle","type":"number","skin":"three/框架.png","promptColor":"#ffffff","prompt":"输送金钱数量","height":65,"fontSize":20,"color":"#ffffff","align":"center"},
+                    "nodeParent":222,
+                    "label":"sendMon",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":218,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"TextInput",
+                    "searchKey":"TextInput,sendSlo",
+                    "props":{"y":181,"x":1,"width":210,"var":"sendSlo","valign":"middle","type":"number","skin":"three/框架.png","promptColor":"#ffffff","prompt":"输送兵力数量","height":65,"fontSize":20,"color":"#ffffff","align":"center"},
+                    "nodeParent":222,
+                    "label":"sendSlo",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":219,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Button",
+                    "searchKey":"Button,sendBtn",
+                    "props":{"y":266,"x":25,"var":"sendBtn","stateNum":"1","skin":"three/确认.png"},
+                    "nodeParent":222,
+                    "label":"sendBtn",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":223,
+                    "child":[
+                        ]
                 }]
         }],
     "animations":[

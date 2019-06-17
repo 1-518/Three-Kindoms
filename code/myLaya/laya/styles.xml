@@ -1,4 +1,4 @@
 <res>
-   <item name="three/框架.png" type="Sprite" compress="0" pack="0" quality="80" props="sizeGrid=23,56,23,59" picType="0" scale="0"/>
+   <item name="three/框架.png" type="Sprite" compress="0" pack="0" quality="80" props="sizeGrid=23,103,23,87" picType="0" scale="0"/>
    <item name="three/beij.png" type="Sprite" compress="0" pack="0" quality="80" props="sizeGrid=18,27,19,25" picType="0" scale="0"/>
 </res>
