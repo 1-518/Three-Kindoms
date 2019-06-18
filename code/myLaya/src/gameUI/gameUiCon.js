@@ -14,6 +14,7 @@
         this.arrPerson=[];
         this.nowDate=[];
         this. other=[] ;
+        
     }
     onOpened(newOrLoad){
         //新游戏读数据    
@@ -21,7 +22,7 @@
             Laya.loader.load("midCity.json",Laya.Handler.create(this,this.onCityStart),null,Laya.loader.JSON);
             Laya.loader.load("midFaction.json",Laya.Handler.create(this,this.onFactionStart),null,Laya.loader.JSON);
             Laya.loader.load("midPerson.json",Laya.Handler.create(this,this.onPersonStart),null,Laya.loader.JSON);
-            this.nowDate=[184,1];
+            this.nowDate={"year":184,"season":1};
             this.playerFactionID=newOrLoad;
         }
         //读取游戏数据
@@ -32,6 +33,8 @@
             this.nowDate=Laya.LocalStorage.getJSON("time");
             this.playerFactionID=Laya.LocalStorage.getJSON("fID");
         }
+        this.time.text=this.nowDate.year+"年"+this.nowDate.season+"月";
+
     }
 
     onCityStart(){
@@ -103,8 +106,6 @@
         this.yongAn.on(Laya.Event.CLICK,this,this.setYongAn);//永安
         this.city.on(Laya.Event.CLICK,this,this.menuCon);
         this.map.on(Laya.Event.CLICK,this,this.closeMenu);
-        
-        
     }
   
        
@@ -191,6 +192,18 @@
    //写入城池北海信息
    setBeiHai(){
             this.cityNum=0;
+            if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+                this.interior.disabled=false;
+                this.personnel.disabled=false;
+                this.military.disabled=false;
+                this.tricks.disabled=true;
+            } 
+            else{
+                this.tricks.disabled=false;
+                this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+            }
             this.cityName.text=this.arrCity[0].cityName;
             this.moneyData.text=this.arrCity[0].cityMoney;
             this.bunessData.text=this.arrCity[0].cityBussiness;
@@ -221,6 +234,18 @@
     //写入琅琊信息
     setLangya(){
         this.cityNum=1;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[1].cityName;
         this.moneyData.text=this.arrCity[1].cityMoney;
         this.bunessData.text=this.arrCity[1].cityBussiness;
@@ -251,6 +276,18 @@
     //写入黄陵信息
     setHuangLing(){
         this.cityNum=2;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[2].cityName;
         this.moneyData.text=this.arrCity[2].cityMoney;
         this.bunessData.text=this.arrCity[2].cityBussiness;
@@ -280,6 +317,18 @@
     }
     setWu(){
         this.cityNum=3;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[3].cityName;
         this.moneyData.text=this.arrCity[3].cityMoney;
         this.bunessData.text=this.arrCity[3].cityBussiness;
@@ -309,6 +358,18 @@
     }
     setKuaiJi(){
         this.cityNum=4;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[4].cityName;
         this.moneyData.text=this.arrCity[4].cityMoney;
         this.bunessData.text=this.arrCity[4].cityBussiness;
@@ -338,6 +399,18 @@
     }
     setNanPi(){
         this.cityNum=5;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[5].cityName;
         this.moneyData.text=this.arrCity[5].cityMoney;
         this.bunessData.text=this.arrCity[5].cityBussiness;
@@ -367,6 +440,18 @@
     }
     setPingYuang(){
         this.cityNum=6;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[6].cityName;
         this.moneyData.text=this.arrCity[6].cityMoney;
         this.bunessData.text=this.arrCity[6].cityBussiness;
@@ -396,6 +481,18 @@
     }
     setJiBei(){
         this.cityNum=7;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[7].cityName;
         this.moneyData.text=this.arrCity[7].cityMoney;
         this.bunessData.text=this.arrCity[7].cityBussiness;
@@ -425,6 +522,18 @@
     }
     setXiaoPei(){
         this.cityNum=8;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[8].cityName;
         this.moneyData.text=this.arrCity[8].cityMoney;
         this.bunessData.text=this.arrCity[8].cityBussiness;
@@ -454,6 +563,18 @@
     }
     setXiaPi(){
         this.cityNum=9;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[9].cityName;
         this.moneyData.text=this.arrCity[9].cityMoney;
         this.bunessData.text=this.arrCity[9].cityBussiness;
@@ -484,6 +605,18 @@
     setJianYe(){
        
         this.cityNum=10;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[10].cityName;
         this.moneyData.text=this.arrCity[10].cityMoney;
         this.bunessData.text=this.arrCity[10].cityBussiness;
@@ -514,6 +647,18 @@
     setZhongShan(){
         
         this.cityNum=11;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[11].cityName;
         this.moneyData.text=this.arrCity[11].cityMoney;
         this.bunessData.text=this.arrCity[11].cityBussiness;
@@ -544,6 +689,18 @@
     setGanLing(){
        
         this.cityNum=12;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[12].cityName;
         this.moneyData.text=this.arrCity[12].cityMoney;
         this.bunessData.text=this.arrCity[12].cityBussiness;
@@ -574,6 +731,18 @@
     setShouChun(){
         
         this.cityNum=13;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[13].cityName;
         this.moneyData.text=this.arrCity[13].cityMoney;
         this.bunessData.text=this.arrCity[13].cityBussiness;
@@ -604,6 +773,18 @@
     setLuJiang(){
        
         this.cityNum=14;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[14].cityName;
         this.moneyData.text=this.arrCity[14].cityMoney;
         this.bunessData.text=this.arrCity[14].cityBussiness;
@@ -634,6 +815,18 @@
     setJuLu(){
        
         this.cityNum=15;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[15].cityName;
         this.moneyData.text=this.arrCity[15].cityMoney;
         this.bunessData.text=this.arrCity[15].cityBussiness;
@@ -664,6 +857,18 @@
     setYe(){
         
         this.cityNum=16;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[16].cityName;
         this.moneyData.text=this.arrCity[16].cityMoney;
         this.bunessData.text=this.arrCity[16].cityBussiness;
@@ -694,6 +899,18 @@
     setPuYang(){
        
         this.cityNum=17;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[17].cityName;
         this.moneyData.text=this.arrCity[17].cityMoney;
         this.bunessData.text=this.arrCity[17].cityBussiness;
@@ -724,6 +941,18 @@
     setJiao(){
         
         this.cityNum=18;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[18].cityName;
         this.moneyData.text=this.arrCity[18].cityMoney;
         this.bunessData.text=this.arrCity[18].cityBussiness;
@@ -754,6 +983,18 @@
     setChenLiu(){
        
         this.cityNum=19;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[19].cityName;
         this.moneyData.text=this.arrCity[19].cityMoney;
         this.bunessData.text=this.arrCity[19].cityBussiness;
@@ -784,6 +1025,18 @@
     setJinYan(){
        
         this.cityNum=20;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[20].cityName;
         this.moneyData.text=this.arrCity[20].cityMoney;
         this.bunessData.text=this.arrCity[20].cityBussiness;
@@ -814,6 +1067,18 @@
     setShangTan(){
       
         this.cityNum=21;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[21].cityName;
         this.moneyData.text=this.arrCity[21].cityMoney;
         this.bunessData.text=this.arrCity[21].cityBussiness;
@@ -844,6 +1109,18 @@
     setHeNei(){
         
         this.cityNum=22;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[22].cityName;
         this.moneyData.text=this.arrCity[22].cityMoney;
         this.bunessData.text=this.arrCity[22].cityBussiness;
@@ -874,6 +1151,18 @@
     setXuChan(){
        
         this.cityNum=23;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[23].cityName;
         this.moneyData.text=this.arrCity[23].cityMoney;
         this.bunessData.text=this.arrCity[23].cityBussiness;
@@ -904,6 +1193,18 @@
     setRuNan(){
        
         this.cityNum=24;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[24].cityName;
         this.moneyData.text=this.arrCity[24].cityMoney;
         this.bunessData.text=this.arrCity[24].cityBussiness;
@@ -934,6 +1235,18 @@
     setJiangXia(){
        
         this.cityNum=25;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[25].cityName;
         this.moneyData.text=this.arrCity[25].cityMoney;
         this.bunessData.text=this.arrCity[25].cityBussiness;
@@ -964,6 +1277,18 @@
     setLuoYan(){
        
         this.cityNum=26;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[26].cityName;
         this.moneyData.text=this.arrCity[26].cityMoney;
         this.bunessData.text=this.arrCity[26].cityBussiness;
@@ -994,6 +1319,18 @@
     setWan(){
        
         this.cityNum=27;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[27].cityName;
         this.moneyData.text=this.arrCity[27].cityMoney;
         this.bunessData.text=this.arrCity[27].cityBussiness;
@@ -1024,6 +1361,18 @@
     setXinYe(){
        
         this.cityNum=28;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[28].cityName;
         this.moneyData.text=this.arrCity[28].cityMoney;
         this.bunessData.text=this.arrCity[28].cityBussiness;
@@ -1054,6 +1403,18 @@
     setHongNong(){
        
         this.cityNum=29;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[29].cityName;
         this.moneyData.text=this.arrCity[29].cityMoney;
         this.bunessData.text=this.arrCity[29].cityBussiness;
@@ -1084,6 +1445,18 @@
     setXianYan(){
        
         this.cityNum=30;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[30].cityName;
         this.moneyData.text=this.arrCity[30].cityMoney;
         this.bunessData.text=this.arrCity[30].cityBussiness;
@@ -1114,6 +1487,18 @@
     setJiangLing(){
        
         this.cityNum=31;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[31].cityName;
         this.moneyData.text=this.arrCity[31].cityMoney;
         this.bunessData.text=this.arrCity[31].cityBussiness;
@@ -1144,6 +1529,18 @@
     setChangAn(){
        
         this.cityNum=32;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[32].cityName;
         this.moneyData.text=this.arrCity[32].cityMoney;
         this.bunessData.text=this.arrCity[32].cityBussiness;
@@ -1174,6 +1571,18 @@
     setShangYong(){
        
         this.cityNum=33;
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[33].cityName;
         this.moneyData.text=this.arrCity[33].cityMoney;
         this.bunessData.text=this.arrCity[33].cityBussiness;
@@ -1204,6 +1613,20 @@
     setYongAn(){
        
         this.cityNum=34;
+        console.log(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID);
+        
+        if(this.arrCity[this.cityNum].cityBelongFactionID==this.playerFactionID){
+            this.interior.disabled=false;
+            this.personnel.disabled=false;
+            this.military.disabled=false;
+            this.tricks.disabled=true;
+        } 
+        else{
+            this.tricks.disabled=false;
+            this.interior.disabled=true;
+            this.personnel.disabled=true;
+            this.military.disabled=true;
+        }
         this.cityName.text=this.arrCity[34].cityName;
         this.moneyData.text=this.arrCity[34].cityMoney;
         this.bunessData.text=this.arrCity[34].cityBussiness;
@@ -1901,11 +2324,16 @@ warOpen(e,index){
             this.arrPerson[this.perNum-1].personState=0;
             if((this.arrCity[this.cityNum].citySoldier>this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].cityDefense)&&(this.arrCity[this.cityNum].cityBelongFactionID!=this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].cityBelongFactionID))
             {
-                console.log("V");
+                alert("你在这次战斗中获得了胜利！")
+                this.arrCity[this.cityNum].cityMoney=0.5*Number(this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].cityMoney) +this.arrCity[this.cityNum].cityMoney;
+                this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].cityMoney=this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].cityMoney-0.5*Number(this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].cityMoney);
+                this.arrCity[this.cityNum].citySoldier=0.5*Number(this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].citySoldier) +this.arrCity[this.cityNum].citySoldier;
+                this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].citySoldier=this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].citySoldier-0.5*Number(this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].citySoldier);
                 this.otherCityList.visible=false;
+                this.topData.visible=false;
             }
             else{
-                console.log("D");
+                alert("很遗憾，你在这次战斗失败")
                 this.otherCityList.visible=false;
             }
             this.downData.visible=true;
@@ -2642,10 +3070,10 @@ warOpen(e,index){
     }
     nextRound(){
         //时间信息变化
-        this.nowDate[1]++;
-        if(this.nowDate[1]==5){
-            this.nowDate[1]=1;
-            this.nowDate[0]++;
+        this.nowDate.season++;
+        if(this.nowDate.season==13){
+            this.nowDate.season=1;
+            this.nowDate.year++;
         }
         //城池信息变化
         let i=0;
@@ -2673,7 +3101,8 @@ warOpen(e,index){
         Laya.LocalStorage.setJSON("midfaction",this.arrFaction);
         Laya.LocalStorage.setJSON("time",this.nowDate);
         Laya.LocalStorage.setJSON("fID",this.playerFactionID);
-        //刷新数据
+        //刷新数据  
+        this.time.text=this.nowDate.year+"年"+this.nowDate.season+"月";
         this.topData.visible=false;
         
     }

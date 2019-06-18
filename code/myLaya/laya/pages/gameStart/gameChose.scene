@@ -2,10 +2,11 @@
     "x":0,
     "type":"Scene",
     "selectedBox":2,
+    "selecteID":15,
     "searchKey":"Scene",
-    "props":{"width":1136,"sceneColor":"#000000","height":640,"autoDestroyAtClosed":true},
+    "props":{"width":1136,"sceneColor":"#000000","runtime":"gameUI/startUi.js","height":640,"autoDestroyAtClosed":true},
     "nodeParent":-1,
-    "maxID":26,
+    "maxID":33,
     "label":"Scene",
     "isOpen":true,
     "isDirectory":true,
@@ -20,29 +21,59 @@
             "props":{"y":-113,"x":-195,"width":1526,"texture":"three/11.jpg","height":866},
             "nodeParent":2,
             "label":"Sprite",
+            "isOpen":true,
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
             "compId":3,
             "child":[
                 ],
-            "$LOCKED":true
+            "$LOCKED":false
+        },
+        {
+            "x":15,
+            "type":"Button",
+            "searchKey":"Button,loadToGameButton",
+            "props":{"y":514,"x":499,"var":"loadToGameButton","stateNum":"1","skin":"three/进入游戏.png","disabled":true},
+            "nodeParent":2,
+            "label":"loadToGameButton",
+            "isOpen":false,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":15,
+            "child":[
+                {
+                    "type":"Script",
+                    "switchAble":true,
+                    "source":"src/gameUI/gameChosetoMain.js",
+                    "searchKey":"Script,gameChosetoMain",
+                    "removeAble":true,
+                    "props":{"enabled":true},
+                    "nodeParent":15,
+                    "label":"gameChosetoMain",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":16,
+                    "child":[
+                        ]
+                }]
         },
         {
             "x":15,
             "type":"List",
-            "searchKey":"List",
-            "props":{"y":141,"x":408,"width":369,"vScrollBarSkin":"comp/vscroll.png","spaceY":20,"repeatY":6,"repeatX":1,"height":296},
+            "searchKey":"List,choList",
+            "props":{"y":141,"x":408,"width":369,"var":"choList","vScrollBarSkin":"comp/vscroll.png","spaceY":20,"repeatY":6,"repeatX":1,"height":296},
             "nodeParent":2,
-            "label":"List",
-            "isOpen":true,
+            "label":"choList",
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":9,
             "child":[
                 {
-                    "x":30,
                     "type":"Box",
                     "searchKey":"Box",
                     "props":{"x":-0.25,"renderType":"render"},
@@ -55,7 +86,6 @@
                     "compId":8,
                     "child":[
                         {
-                            "x":45,
                             "type":"Sprite",
                             "searchKey":"Sprite",
                             "props":{"x":-0.5,"texture":"three/框架.png"},
@@ -69,16 +99,28 @@
                                 ]
                         },
                         {
-                            "x":45,
-                            "type":"Text",
-                            "searchKey":"Text",
-                            "props":{"y":18,"x":113.5,"text":"势力","fontSize":50,"color":"#ffffff"},
+                            "type":"Label",
+                            "searchKey":"Label,allFaction",
+                            "props":{"y":23,"x":120.994140625,"text":"label","name":"allFaction","fontSize":40,"color":"#ffffff"},
                             "nodeParent":8,
-                            "label":"Text",
+                            "label":"allFaction",
                             "isDirectory":false,
                             "isAniNode":false,
                             "hasChild":false,
-                            "compId":7,
+                            "compId":26,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "type":"Button",
+                            "searchKey":"Button",
+                            "props":{"y":18.5,"x":13,"width":72,"skin":"three/创建.png","labelStrokeColor":"#ffffff","labelStroke":1,"labelSize":25,"labelBold":true,"labelAlign":"center","label":"选择","height":49},
+                            "nodeParent":8,
+                            "label":"Button",
+                            "isDirectory":false,
+                            "isAniNode":false,
+                            "hasChild":false,
+                            "compId":27,
                             "child":[
                                 ]
                         }]
@@ -86,33 +128,45 @@
         },
         {
             "x":15,
-            "type":"Button",
-            "searchKey":"Button",
-            "props":{"y":514,"x":499,"stateNum":"1","skin":"three/进入游戏.png"},
+            "type":"Sprite",
+            "searchKey":"Sprite",
+            "props":{"y":27,"x":376,"width":412,"texture":"three/创建.png","height":99},
             "nodeParent":2,
-            "label":"Button",
-            "isOpen":null,
-            "isDirectory":true,
+            "label":"Sprite",
+            "isDirectory":false,
             "isAniNode":true,
-            "hasChild":true,
-            "compId":15,
+            "hasChild":false,
+            "compId":28,
             "child":[
-                {
-                    "type":"Script",
-                    "switchAble":true,
-                    "source":"src/gameUI/gameChosetoMain.js",
-                    "searchKey":"Script,gameChosetoMain",
-                    "removeAble":true,
-                    "props":{},
-                    "nodeParent":15,
-                    "label":"gameChosetoMain",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":16,
-                    "child":[
-                        ]
-                }]
+                ]
+        },
+        {
+            "x":15,
+            "type":"Label",
+            "searchKey":"Label",
+            "props":{"y":57,"x":396,"text":"你的势力是：","fontSize":40},
+            "nodeParent":2,
+            "label":"Label",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":29,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Label",
+            "searchKey":"Label,choName",
+            "props":{"y":57,"x":636,"width":101,"var":"choName","height":46,"fontSize":40},
+            "nodeParent":2,
+            "label":"choName",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":30,
+            "child":[
+                ]
         }],
     "animations":[
         {
