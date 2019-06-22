@@ -106,9 +106,12 @@
         this.yongAn.on(Laya.Event.CLICK,this,this.setYongAn);//永安
         this.city.on(Laya.Event.CLICK,this,this.menuCon);
         this.map.on(Laya.Event.CLICK,this,this.closeMenu);
+        this.talkBtn.on(Laya.Event.CLICK,this,this.tlakCon);
     }
   
-       
+       tlakCon(){
+           this.talk.visible=false;
+       }
     
     //军事游戏菜单控制
     militaryCon() {
@@ -196,11 +199,11 @@
                 this.interior.disabled=false;
                 this.personnel.disabled=false;
                 this.military.disabled=false;
-                this.tricks.disabled=true;
+                this.tricks.disabled=false;
             } 
             else{
-                this.tricks.disabled=false;
-                this.interior.disabled=true;
+            this.tricks.disabled=true;
+            this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
             }
@@ -238,10 +241,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -280,10 +283,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -321,10 +324,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -362,10 +365,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -403,10 +406,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -444,10 +447,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -485,10 +488,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -526,10 +529,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -567,10 +570,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -609,10 +612,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -651,10 +654,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -693,10 +696,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -735,10 +738,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -777,10 +780,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -819,10 +822,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -861,10 +864,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -903,10 +906,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -945,10 +948,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -987,10 +990,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -1029,10 +1032,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -1071,10 +1074,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -1113,10 +1116,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -1155,10 +1158,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -1197,10 +1200,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -1239,10 +1242,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -1281,10 +1284,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -1323,10 +1326,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -1365,10 +1368,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -1407,10 +1410,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -1449,10 +1452,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -1491,10 +1494,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -1533,10 +1536,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -1575,10 +1578,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -1619,10 +1622,10 @@
             this.interior.disabled=false;
             this.personnel.disabled=false;
             this.military.disabled=false;
-            this.tricks.disabled=true;
+            this.tricks.disabled=false;
         } 
         else{
-            this.tricks.disabled=false;
+            this.tricks.disabled=true;
             this.interior.disabled=true;
             this.personnel.disabled=true;
             this.military.disabled=true;
@@ -1666,6 +1669,8 @@
             this.otherCityList.visible=false;
             this.downData.visible=true;
             this.send.visible=false;
+            this.infList.visible=false;
+
     }
     closeMenu(){
             this.personnelMenu.visible=false;
@@ -1677,6 +1682,7 @@
             this.otherCityList.visible=false; 
             this.downData.visible=true;  
             this.send.visible=false;
+            this.infList.visible=false;
     }
     farPersonOpen(){
         this.interiorMenu.visible=false;
@@ -2324,7 +2330,9 @@ warOpen(e,index){
             this.arrPerson[this.perNum-1].personState=0;
             if((this.arrCity[this.cityNum].citySoldier>this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].cityDefense)&&(this.arrCity[this.cityNum].cityBelongFactionID!=this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].cityBelongFactionID))
             {
-                alert("你在这次战斗中获得了胜利！")
+                    this.talk.visible=true;
+                    this.talkText.text="恭喜你在本次战役中获得了胜利！！\n在本次战役中你获得了\n兵力："+0.5*Number(this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].citySoldier)+"\n金钱："+0.5*Number(this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].cityMoney);
+    
                 this.arrCity[this.cityNum].cityMoney=0.5*Number(this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].cityMoney) +this.arrCity[this.cityNum].cityMoney;
                 this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].cityMoney=this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].cityMoney-0.5*Number(this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].cityMoney);
                 this.arrCity[this.cityNum].citySoldier=0.5*Number(this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].citySoldier) +this.arrCity[this.cityNum].citySoldier;
@@ -2333,7 +2341,8 @@ warOpen(e,index){
                 this.topData.visible=false;
             }
             else{
-                alert("很遗憾，你在这次战斗失败")
+                this.talk.visible=true;
+                this.talkText.text="很遗憾，你在这次战斗失败";
                 this.otherCityList.visible=false;
             }
             this.downData.visible=true;
@@ -2509,7 +2518,11 @@ warOpen(e,index){
             let data6=Number(this.arrCity[this.cityNum].citySoldier);
             let soData=Number(this.sendSlo.text);
         if(foodData>data2||foodData<0)
-            alert("请输入正确数据");
+        {
+            this.talk.visible=true;
+            this.talkText.text="请输入正确数据";
+
+        }
         else{
             data1+=foodData;
             data2-=foodData;
@@ -2520,7 +2533,11 @@ warOpen(e,index){
         }
         // this.sendSlo.text>this.arrCity[this.cityNum].citySoldier||this.sendSlo.text<0
         if(monData>data4||monData<0)
-            alert("请输入正确数据");
+        {
+            this.talk.visible=true;
+            this.talkText.text="请输入正确数据";
+
+        }
         else{
             data3+=monData;
             data4-=monData;
@@ -2529,7 +2546,11 @@ warOpen(e,index){
             this.moneyData.text= this.arrCity[this.cityNum].cityMoney;
         }
         if(soData>data6||soData<0)
-            alert("请输入正确数据");
+            {
+                this.talk.visible=true;
+                this.talkText.text="请输入正确数据";
+
+            }
         else{
             data5+=soData;
             data6-=soData;

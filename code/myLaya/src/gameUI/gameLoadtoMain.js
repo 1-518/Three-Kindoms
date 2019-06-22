@@ -14,6 +14,11 @@ export default class gameLoadtoMain extends Laya.Script {
     }
     
     onEnable() {
+        
+        
+        if(Laya.LocalStorage.getJSON("fID")==null){
+            this.owner.disabled=true;
+        }
     }
 
     onDisable() {
