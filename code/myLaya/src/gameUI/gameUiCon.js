@@ -34,7 +34,7 @@
             this.playerFactionID=Laya.LocalStorage.getJSON("fID");
         }
         this.time.text=this.nowDate.year+"年"+this.nowDate.season+"月";
-
+        
     }
 
     onCityStart(){
@@ -53,7 +53,7 @@
         var json=Laya.loader.getRes("midPerson.json");
         this.arrPerson=json["midPerson"]; //arry[35]从json读取进来。    
     }
-
+    
     onEnable() {
         this.military.on(Laya.Event.CLICK,this,this.militaryCon);
         this.interior.on(Laya.Event.CLICK,this,this.interiorCon);
@@ -61,14 +61,11 @@
         this.personnel.on(Laya.Event.CLICK,this,this.personnelCon);
         this.information.on(Laya.Event.CLICK,this,this.infListCon);
         this.next1.on(Laya.Event.CLICK,this,this.nextRound);
-       
-         //arry[35]从json读取进来。
+        //arry[35]从json读取进来。
        
         //监听返回值
 
         //输出arr[返回值]
-
-
         this.beiHai.on(Laya.Event.CLICK,this,this.setBeiHai);//北海
         this.langYa.on(Laya.Event.CLICK,this,this.setLangya);//琅琊
         this.huangLing.on(Laya.Event.CLICK,this,this.setHuangLing);//黄陵
@@ -107,12 +104,28 @@
         this.city.on(Laya.Event.CLICK,this,this.menuCon);
         this.map.on(Laya.Event.CLICK,this,this.closeMenu);
         this.talkBtn.on(Laya.Event.CLICK,this,this.tlakCon);
+        this.welBtn.on(Laya.Event.CLICK,this,this.welCon);
     }
   
        tlakCon(){
            this.talk.visible=false;
+           
        }
-    
+       welCon(){
+        this.welcome.visible=false;
+        this.city.disabled=false;
+        this.downData.disabled=false;
+        this.information.disabled=false;
+        console.log( this.city.getChildAt(1).name);
+        
+        for(let i=0;i<35;i++)
+        {
+            if(this.arrCity[i].cityBelongFactionID==this.playerFactionID){
+                this.city.getChildAt(i).skin="three/playCity.jpg";
+                this.city.getChildAt(i).alpha=0.7;
+            }
+        }
+    }
     //军事游戏菜单控制
     militaryCon() {
         if(
@@ -121,6 +134,7 @@
             this.interiorMenu.visible=false;
             this.tricksMenu.visible=false;
             this.personnelMenu.visible=false;
+            
         }
         else
             this.militaryMenu.visible=false;
@@ -191,6 +205,7 @@
             allCity.push(data);
        }
         this.infList.dataSource=allCity;
+       
    }
    //写入城池北海信息
    setBeiHai(){
@@ -2328,24 +2343,82 @@ warOpen(e,index){
     if(e.type==Laya.Event.CLICK){
         if((e.target)instanceof Laya.Button){
             this.arrPerson[this.perNum-1].personState=0;
-            if((this.arrCity[this.cityNum].citySoldier>this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].cityDefense)&&(this.arrCity[this.cityNum].cityBelongFactionID!=this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].cityBelongFactionID))
+            let thisCityPer=[];
+            let thisCityPerCount=0;
+            let choCityPer=[];
+            let defCity=this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1];
+            let attCity=this.arrCity[this.cityNum];
+            for(let j=0;j<220;j++){
+                if(this.arrPerson[j].personCityID==defCity.cityID){
+                    thisCityPer[thisCityPerCount]=this.arrPerson[j];
+                    thisCityPerCount++;
+                }
+            }
+            choCityPer=thisCityPer[0];
+            let i=0;
+           while(thisCityPer[i+1]!=null){
+                if(thisCityPer[i].personMilitary<thisCityPer[i+1].personMilitary)
+                choCityPer=thisCityPer[i+1];
+                i++;
+            }
+            let attackData=Number(attCity.citySoldier) *(Number(this.arrPerson[this.perNum-1].personCommand) +Number(this.arrPerson[this.perNum-1].personMilitary) );
+            let defData=(Number(defCity.cityDefense) +Number(defCity.citySoldier) )*(Number(choCityPer.personCommand) +Number(choCityPer.personMilitary) );
+            
+            if(attackData>defData)
             {
-                    this.talk.visible=true;
-                    this.talkText.text="恭喜你在本次战役中获得了胜利！！\n在本次战役中你获得了\n兵力："+0.5*Number(this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].citySoldier)+"\n金钱："+0.5*Number(this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].cityMoney);
-    
-                this.arrCity[this.cityNum].cityMoney=0.5*Number(this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].cityMoney) +this.arrCity[this.cityNum].cityMoney;
-                this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].cityMoney=this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].cityMoney-0.5*Number(this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].cityMoney);
-                this.arrCity[this.cityNum].citySoldier=0.5*Number(this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].citySoldier) +this.arrCity[this.cityNum].citySoldier;
-                this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].citySoldier=this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].citySoldier-0.5*Number(this.arrCity[this.arrCity[this.cityNum].cityConnCityID[index]-1].citySoldier);
                 this.otherCityList.visible=false;
                 this.topData.visible=false;
-            }
-            else{
+                let perToCity=[];
+                let aCount=0;
+                for(let k=0;k<35;k++){
+                    if(this.arrCity[k].cityBelongFactionID==defCity.cityBelongFactionID&&this.arrCity[k].cityID!=defCity.cityID){
+                    perToCity[aCount]=this.arrCity[k];
+                    console.log(perToCity);
+                    aCount++;
+                    }
+                    
+                }
+                console.log(thisCityPer);
+                let m=0;
+                while(thisCityPer[m]!=null){
+                    this.arrPerson[thisCityPer[m].personID-1].personCityID=perToCity[m].cityID;
+                    m++;
+                }
+                //城市势力改变
+                defCity.cityBelongFactionID=attCity.cityBelongFactionID;
+                //兵力减少，att兵力-def兵力
+                attCity.citySoldier=Number(attCity.citySoldier)-Number(defCity.citySoldier);
+                //失败方城防减少
+                defCity.cityDefense=Number(defCity.cityDefense)-100;
+                //金钱减少
+                attCity.cityMoney=Number(attCity.cityMoney)-Number(attCity.citySoldier);
+                //民忠减少
+                defCity.cityLoyal=Number(defCity.cityLoyal)-(100-Number(this.arrPerson[this.perNum-1].personTrick)*Number(this.arrPerson[this.perNum-1].personPolitics));
+                
+                
                 this.talk.visible=true;
-                this.talkText.text="很遗憾，你在这次战斗失败";
+                this.talkText.text="恭喜你在本次战役中获得了胜利！！\n你获得了该城池\n在本次战役中\n消耗兵力："+defCity.citySoldier+"\n消耗金钱："+attCity.cityMoney;
+                
+            }
+            else if(attCity.cityBelongFactionID==defCity.cityBelongFactionID){
+                this.talk.visible=true;
+                this.talkText.text="该城池为己方势力不能攻打";
                 this.otherCityList.visible=false;
             }
+            else{
+                //失败兵力减少
+                attCity.citySoldier=Number(attCity.citySoldier)-Number(defCity.cityDefense);
+                defCity.citySoldier=Number(defCity.citySoldier)-attCity.citySoldier;
+                //城防减少
+                defCity.cityDefense=Number(defCity.cityDefense)*0.5;
+                this.otherCityList.visible=false;
+                this.topData.visible=false;
+                this.talk.visible=true;
+                this.talkText.text="败北\n在本次战役中\n损失兵力："+defCity.citySoldier+"\n对方武将为："+choCityPer.personName+"\n武力："+choCityPer.personMilitary+"统帅："+choCityPer.personCommand+"\n计策："+choCityPer.personTrick+"政治："+choCityPer.personPolitics;
+
+            }
             this.downData.visible=true;
+            this.welCon();
         }
     } 
  }
